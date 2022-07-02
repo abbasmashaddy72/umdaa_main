@@ -10,6 +10,7 @@
         "barryvdh/laravel-dompdf": "^1.0",
         "bepsvpt/secure-headers": "^7.2",
         "binarytorch/larecipe": "^2.5",
+        "dietercoopman/smart": "^1.6",
         "diglactic/laravel-breadcrumbs": "^7.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
