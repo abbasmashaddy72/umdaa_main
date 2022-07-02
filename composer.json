@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "mckenziearts/laravel-notify": "^2.3",
-        "owen-it/laravel-auditing": "^13.0"
+        "owen-it/laravel-auditing": "^13.0",
+        "protonemedia/laravel-form-components": "^3.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
