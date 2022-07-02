@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f449cfd7025eb88fa558016ae910ae4d",
+    "content-hash": "f0c1116c04fa13833797f2634b92b0cb",
     "packages": [
         {
             "name": "asantibanez/livewire-charts",
@@ -5731,6 +5731,151 @@
     ],
     "packages-dev": [
         {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.6.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "814b36a08a60f4159cdcbb1c466a6a0027440b6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/814b36a08a60f4159cdcbb1c466a6a0027440b6c",
+                "reference": "814b36a08a60f4159cdcbb1c466a6a0027440b6c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^6|^7|^8|^9",
+                "illuminate/session": "^6|^7|^8|^9",
+                "illuminate/support": "^6|^7|^8|^9",
+                "maximebf/debugbar": "^1.17.2",
+                "php": ">=7.2",
+                "symfony/debug": "^4.3|^5|^6",
+                "symfony/finder": "^4.3|^5|^6"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.3",
+                "orchestra/testbench-dusk": "^4|^5|^6|^7",
+                "phpunit/phpunit": "^8.5|^9.0",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.6-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facades\\Debugbar"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "support": {
+                "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.6.8"
+            },
+            "funding": [
+                {
+                    "url": "https://fruitcake.nl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-08T15:03:05+00:00"
+        },
+        {
+            "name": "beyondcode/laravel-query-detector",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beyondcode/laravel-query-detector.git",
+                "reference": "8261d80c71c97e994c1021fe5c3bd2a1c27106fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beyondcode/laravel-query-detector/zipball/8261d80c71c97e994c1021fe5c3bd2a1c27106fc",
+                "reference": "8261d80c71c97e994c1021fe5c3bd2a1c27106fc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "laravel/legacy-factories": "^1.0",
+                "orchestra/testbench": "^3.0 || ^4.0 || ^5.0 || ^6.0",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BeyondCode\\QueryDetector\\QueryDetectorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BeyondCode\\QueryDetector\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "marcel@beyondco.de",
+                    "homepage": "https://beyondcode.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel N+1 Query Detector",
+            "homepage": "https://github.com/beyondcode/laravel-query-detector",
+            "keywords": [
+                "beyondcode",
+                "laravel-query-detector"
+            ],
+            "support": {
+                "issues": "https://github.com/beyondcode/laravel-query-detector/issues",
+                "source": "https://github.com/beyondcode/laravel-query-detector/tree/1.6.0"
+            },
+            "time": "2022-02-12T16:23:40+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.4.1",
             "source": {
@@ -5990,6 +6135,325 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+            "name": "imanghafoori/laravel-microscope",
+            "version": "v1.0.263",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imanghafoori1/laravel-microscope.git",
+                "reference": "d6a9cf710e25569907d65f3a6a96117520e8da3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/d6a9cf710e25569907d65f3a6a96117520e8da3b",
+                "reference": "d6a9cf710e25569907d65f3a6a96117520e8da3b",
+                "shasum": ""
+            },
+            "require": {
+                "imanghafoori/php-abstract-filesystem": "^0.1.1",
+                "imanghafoori/php-search-replace": "1.*",
+                "imanghafoori/php-token-analyzer": "^0.1.35",
+                "imanghafoori/smart-realtime-facades": "^1.1.4",
+                "jetbrains/phpstorm-attributes": "1.*",
+                "laravel/framework": "5.*|6.*|7.*|8.*|9.*",
+                "php": "^7.1.3|8.0.*|8.1.*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0",
+                "phpunit/phpunit": "^9.5.20"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Imanghafoori\\LaravelMicroscope\\LaravelMicroscopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Imanghafoori\\LaravelMicroscope\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Iman",
+                    "email": "imanghafoori1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Automatically test your laravel application",
+            "homepage": "https://github.com/imanghafoori1/laravel-microscope",
+            "keywords": [
+                "laravel-microscope",
+                "laravel-testing"
+            ],
+            "support": {
+                "issues": "https://github.com/imanghafoori1/laravel-microscope/issues",
+                "source": "https://github.com/imanghafoori1/laravel-microscope/tree/v1.0.263"
+            },
+            "time": "2022-06-30T20:59:33+00:00"
+        },
+        {
+            "name": "imanghafoori/php-abstract-filesystem",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imanghafoori1/abstract_php_filesystem.git",
+                "reference": "9a37f739e2a61ab16fa0a59f059eb6b80225ffc0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imanghafoori1/abstract_php_filesystem/zipball/9a37f739e2a61ab16fa0a59f059eb6b80225ffc0",
+                "reference": "9a37f739e2a61ab16fa0a59f059eb6b80225ffc0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3|8.0.*|8.1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0",
+                "symfony/var-dumper": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imanghafoori\\Filesystem\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Iman",
+                    "email": "imanghafoori1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A thin layer on the top the php native php system.",
+            "homepage": "https://github.com/imanghafoori1/abstract_php_filesystem",
+            "keywords": [
+                "laravel-testing",
+                "php-filesystem"
+            ],
+            "support": {
+                "issues": "https://github.com/imanghafoori1/abstract_php_filesystem/issues",
+                "source": "https://github.com/imanghafoori1/abstract_php_filesystem/tree/v0.1.3"
+            },
+            "time": "2022-05-01T21:27:24+00:00"
+        },
+        {
+            "name": "imanghafoori/php-search-replace",
+            "version": "v1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imanghafoori1/php-smart-search-replace.git",
+                "reference": "08446133719b187285dc8f2ac754ced0ddbf9564"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imanghafoori1/php-smart-search-replace/zipball/08446133719b187285dc8f2ac754ced0ddbf9564",
+                "reference": "08446133719b187285dc8f2ac754ced0ddbf9564",
+                "shasum": ""
+            },
+            "require": {
+                "imanghafoori/php-token-analyzer": "^0.1.2",
+                "php": "^7.1.3|8.0.*|8.1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0",
+                "symfony/var-dumper": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imanghafoori\\SearchReplace\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Iman",
+                    "email": "imanghafoori1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Smart search replace functionality for php source code",
+            "homepage": "https://github.com/imanghafoori1/php-smart-search-replace",
+            "keywords": [
+                "php-search-replace"
+            ],
+            "support": {
+                "issues": "https://github.com/imanghafoori1/php-smart-search-replace/issues",
+                "source": "https://github.com/imanghafoori1/php-smart-search-replace/tree/v1.1.7"
+            },
+            "time": "2022-04-07T14:03:08+00:00"
+        },
+        {
+            "name": "imanghafoori/php-token-analyzer",
+            "version": "v0.1.35",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imanghafoori1/php_token_analyzer.git",
+                "reference": "43337128528ebf5aa10041c42443fafb874d7e43"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imanghafoori1/php_token_analyzer/zipball/43337128528ebf5aa10041c42443fafb874d7e43",
+                "reference": "43337128528ebf5aa10041c42443fafb874d7e43",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3|8.0.*|8.1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0",
+                "symfony/var-dumper": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imanghafoori\\TokenAnalyzer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Iman",
+                    "email": "imanghafoori1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Token analyzer utility for php",
+            "homepage": "https://github.com/imanghafoori1/php_token_analyzer",
+            "keywords": [
+                "php-token-analyzer"
+            ],
+            "support": {
+                "issues": "https://github.com/imanghafoori1/php_token_analyzer/issues",
+                "source": "https://github.com/imanghafoori1/php_token_analyzer/tree/v0.1.35"
+            },
+            "time": "2022-06-16T20:03:03+00:00"
+        },
+        {
+            "name": "imanghafoori/smart-realtime-facades",
+            "version": "v1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imanghafoori1/smart-realtime-facades.git",
+                "reference": "2614e5669ea6a55603f73924827f45339dc6b0f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imanghafoori1/smart-realtime-facades/zipball/2614e5669ea6a55603f73924827f45339dc6b0f3",
+                "reference": "2614e5669ea6a55603f73924827f45339dc6b0f3",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.1|6.*|7.*|8.*|9.*",
+                "php": "7.2.*|7.3.*|7.4.*|8.0.*|8.1.*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~7.0"
+            },
+            "suggest": {
+                "imanghafoori/laravel-heyman": "It allows to write expressive code to authorize, validate and authenticate.",
+                "imanghafoori/laravel-masterpass": "You can set a master password for your accounts.",
+                "imanghafoori/laravel-terminator": "Gives you opportunity to refactor your controllers.",
+                "imanghafoori/laravel-widgetize": "Gives you a better structure and caching opportunity for your laravel apps."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Imanghafoori\\RealtimeFacades\\SmartRealTimeFacadesProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Imanghafoori\\RealtimeFacades\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Iman Ghafoori",
+                    "email": "imanghafoori1@gmail.com"
+                }
+            ],
+            "description": "Real-time facades with IDE auto-completion.",
+            "homepage": "https://github.com/imanghafoori1/smart-realtime-facades",
+            "keywords": [
+                "facade",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/imanghafoori1/smart-realtime-facades/issues",
+                "source": "https://github.com/imanghafoori1/smart-realtime-facades/tree/v1.1.5"
+            },
+            "time": "2022-06-24T19:42:29+00:00"
+        },
+        {
+            "name": "jetbrains/phpstorm-attributes",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JetBrains/phpstorm-attributes.git",
+                "reference": "a7a83ae5df4dd3c0875484483de19de8edf60a9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-attributes/zipball/a7a83ae5df4dd3c0875484483de19de8edf60a9f",
+                "reference": "a7a83ae5df4dd3c0875484483de19de8edf60a9f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JetBrains\\PhpStorm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "JetBrains",
+                    "homepage": "https://www.jetbrains.com"
+                }
+            ],
+            "description": "PhpStorm specific attributes",
+            "keywords": [
+                "attributes",
+                "jetbrains",
+                "phpstorm"
+            ],
+            "support": {
+                "issues": "https://youtrack.jetbrains.com/newIssue?project=WI",
+                "source": "https://github.com/JetBrains/phpstorm-attributes/tree/1.0"
+            },
+            "time": "2020-11-17T11:09:47+00:00"
+        },
+        {
             "name": "laravel/breeze",
             "version": "v1.10.0",
             "source": {
@@ -6105,6 +6569,72 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2022-06-24T13:56:11+00:00"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "0d44b75f3b5d6d41ae83b79c7a4bceae7fbc78b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/0d44b75f3b5d6d41ae83b79c7a4bceae7fbc78b6",
+                "reference": "0d44b75f3b5d6d41ae83b79c7a4bceae7fbc78b6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8",
+                "psr/log": "^1|^2|^3",
+                "symfony/var-dumper": "^2.6|^3|^4|^5|^6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5.20 || ^9.4.2",
+                "twig/twig": "^1.38|^2.7|^3.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.17-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "support": {
+                "issues": "https://github.com/maximebf/php-debugbar/issues",
+                "source": "https://github.com/maximebf/php-debugbar/tree/v1.18.0"
+            },
+            "time": "2021-12-27T18:49:48+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -8342,6 +8872,75 @@
                 }
             ],
             "time": "2022-06-17T06:28:57+00:00"
+        },
+        {
+            "name": "symfony/debug",
+            "version": "v4.4.41",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/debug.git",
+                "reference": "6637e62480b60817b9a6984154a533e8e64c6bd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/6637e62480b60817b9a6984154a533e8e64c6bd5",
+                "reference": "6637e62480b60817b9a6984154a533e8e64c6bd5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "psr/log": "^1|^2|^3"
+            },
+            "conflict": {
+                "symfony/http-kernel": "<3.4"
+            },
+            "require-dev": {
+                "symfony/http-kernel": "^3.4|^4.0|^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Debug\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides tools to ease debugging PHP code",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/debug/tree/v4.4.41"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "abandoned": "symfony/error-handler",
+            "time": "2022-04-12T15:19:55+00:00"
         },
         {
             "name": "theseer/tokenizer",
