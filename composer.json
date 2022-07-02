@@ -20,6 +20,7 @@
         "mckenziearts/laravel-notify": "^2.3",
         "owen-it/laravel-auditing": "^13.0",
         "protonemedia/laravel-form-components": "^3.6",
+        "rahulreghunath/textlocal": "^1.0",
         "silviolleite/laravelpwa": "^2.0",
         "spatie/laravel-cookie-consent": "^3.2"
     },
