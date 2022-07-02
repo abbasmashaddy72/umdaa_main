@@ -2,11 +2,15 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
         "asantibanez/livewire-charts": "^2.4",
+        "asantibanez/livewire-calendar": "dev-master",
         "barryvdh/laravel-dompdf": "^1.0",
         "bepsvpt/secure-headers": "^7.2",
         "binarytorch/larecipe": "^2.5",
@@ -74,5 +78,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Butochnikov/livewire-calendar"
+        }
+    ]
 }

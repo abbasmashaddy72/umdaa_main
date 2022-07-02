@@ -4,8 +4,82 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "356254ed2d0bccde615eb84b69c53631",
+    "content-hash": "ca24c967d77137b125f5c4d6a28696ed",
     "packages": [
+        {
+            "name": "asantibanez/livewire-calendar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Butochnikov/livewire-calendar.git",
+                "reference": "0ac01114fda781b48945e0e068fc2612d151ca1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Butochnikov/livewire-calendar/zipball/0ac01114fda781b48945e0e068fc2612d151ca1e",
+                "reference": "0ac01114fda781b48945e0e068fc2612d151ca1e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "livewire/livewire": "^2.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Asantibanez\\LivewireCalendar\\LivewireCalendarServiceProvider"
+                    ],
+                    "aliases": {
+                        "LivewireCalendar": "Asantibanez\\LivewireCalendar\\LivewireCalendarFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Asantibanez\\LivewireCalendar\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Asantibanez\\LivewireCalendar\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrés Santibáñez",
+                    "email": "santibanez.andres@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Livewire calendar component",
+            "homepage": "https://github.com/asantibanez/livewire-calendar",
+            "keywords": [
+                "asantibanez",
+                "livewire-calendar"
+            ],
+            "support": {
+                "source": "https://github.com/Butochnikov/livewire-calendar/tree/master"
+            },
+            "time": "2022-02-11T00:52:42+00:00"
+        },
         {
             "name": "asantibanez/livewire-charts",
             "version": "v2.4.1",
@@ -10076,7 +10150,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "asantibanez/livewire-calendar": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
