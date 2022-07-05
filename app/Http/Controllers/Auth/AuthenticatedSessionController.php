@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticatedSessionController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Login');
+    }
+
     /**
      * Display the login view.
      *

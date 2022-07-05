@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
+    <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon" type="image/svg+xml">
 
-    @yield('head')
+    <title>{{ config('app.name', 'Laravel') }} | {{ $title ?? '' }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

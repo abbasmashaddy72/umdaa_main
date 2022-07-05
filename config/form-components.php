@@ -6,7 +6,7 @@ return [
     'prefix' => '',
 
     /** tailwind | tailwind-2 | tailwind-forms-simple | bootstrap-4 | bootstrap-5 */
-    'framework' => 'tailwind',
+    'framework' => 'tailwind-2',
 
     'use_eloquent_date_casting' => false,
 
