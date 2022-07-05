@@ -1,6 +1,6 @@
 <x-base-layout>
 
-    <body class="py-5">
+    <body class="login">
 
         {{ $slot }}
 
