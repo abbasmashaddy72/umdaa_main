@@ -110,11 +110,15 @@
 @import "./components/_breadcrumb.css";
 @import "./components/_feather-icon.css";
 @import "./components/_top-bar-boxed.css";
+@import "./components/_feather-icon.css";
 @import "./components/_mobile-menu.css";
 @import "./components/_error-page.css";
 @import "./components/_pos-dropdown.css";
 @import "./components/_post.css";
 @import "./components/_litepicker.css";
+@import "./components/_tippy.css";
 @import "./components/_tom-select.css";
 @import "./components/_dropzone.css";
 @import "./components/_dark-mode-switcher.css";
+@import "./components/_notification-content.css";
+@import "./components/_notification.css";

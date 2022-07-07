@@ -1,5 +1,5 @@
-import _ from 'lodash';
-window._ = _;
+import _ from 'lodash'
+window._ = _
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -7,10 +7,10 @@ window._ = _;
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-import axios from 'axios';
-window.axios = axios;
+import axios from 'axios'
+window.axios = axios
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -32,3 +32,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+// Load plugins
+import helper from './components/helper'
+import * as Popper from '@popperjs/core'
+import dom from '@left4code/tw-starter/dist/js/dom'
+
+// Set plugins globally
+window.helper = helper
+window.Popper = Popper
+window.$ = dom
+
+// CSRF token
+let token = document.head.querySelector('meta[name="csrf-token"]')
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
+} else {
+    console.error(
+        'CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token'
+    )
+}

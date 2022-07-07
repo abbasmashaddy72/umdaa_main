@@ -11,6 +11,7 @@
         "dropzone": "^6.0.0-beta.2",
         "feather-icons": "^4.29.0",
         "litepicker": "^2.0.12",
+        "tippy.js": "^6.3.7",
         "tom-select": "^2.0.3"
     },
     "devDependencies": {
