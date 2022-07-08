@@ -146,10 +146,15 @@
                     <hr class="dropdown-divider border-white/[0.08]">
                 </li>
                 <li>
-                    <a href="" class="dropdown-item hover:bg-white/5">
-                        <i data-feather="toggle-right"class="w-4 h-4 mr-2"></i>
-                        Logout
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); this.closest('form').submit();"
+                            class="dropdown-item hover:bg-white/5">
+                            <i data-feather="toggle-right"class="w-4 h-4 mr-2"></i>
+                            Logout
+                        </a>
+                    </form>
                 </li>
             </ul>
         </div>
