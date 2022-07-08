@@ -3,13 +3,17 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Jenssegers\Agent\Agent;
 
 class AppLayout extends Component
 {
     public $side_menu;
 
+    public $agent;
+
     public function __construct()
     {
+        $this->agent = new Agent();
         $this->side_menu = [
             'dashboard' => [
                 'icon' => 'home',

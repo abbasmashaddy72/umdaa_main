@@ -1,13 +1,17 @@
 <x-base-layout>
 
     <body class="py-5">
-        <!-- BEGIN: Mobile Menu -->
-        @include('layouts.partials.mobile-menu')
-        <!-- END: Mobile Menu -->
+        @if ($agent->isMobile())
+            <!-- BEGIN: Mobile Menu -->
+            @include('layouts.partials.mobile-menu')
+            <!-- END: Mobile Menu -->
+        @endif
         <div class="flex">
-            <!-- BEGIN: Side Menu -->
-            @include('layouts.partials.side-menu')
-            <!-- END: Side Menu -->
+            @if (!$agent->isMobile() || $agent->isTablet())
+                <!-- BEGIN: Side Menu -->
+                @include('layouts.partials.side-menu')
+                <!-- END: Side Menu -->
+            @endif
             <div class="content">
                 <!-- BEGIN: Top Bar -->
                 @include('layouts.partials.top-bar')
