@@ -106,16 +106,16 @@
     </div>
     <!-- END: Notifications -->
     <!-- BEGIN: Account Menu -->
-    <div class="w-8 h-8 intro-x dropdown">
-        <div class="w-8 h-8 overflow-hidden rounded-full shadow-lg dropdown-toggle image-fit zoom-in" role="button"
-            aria-expanded="false" data-tw-toggle="dropdown">
-            <img alt="Midone - HTML Admin Template" src="dist/images/profile-8.jpg">
-        </div>
+    <div class="w-10 h-10 intro-x dropdown">
+        <div class="relative flex items-center justify-center w-10 h-10 text-xl text-white uppercase rounded-full shadow-lg bg-primary dropdown-toggle"
+            role="button" aria-expanded="false" data-tw-toggle="dropdown">
+            {{ Auth::user()->initials }}</div>
         <div class="w-56 dropdown-menu">
             <ul class="text-white dropdown-content bg-primary">
                 <li class="p-2">
-                    <div class="font-medium">Christian Bale</div>
-                    <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">Backend Engineer</div>
+                    <div class="font-medium">{{ Auth::user()->name }}</div>
+                    <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">
+                        {{ Auth::user()->roles->first()->title }}</div>
                 </li>
                 <li>
                     <hr class="dropdown-divider border-white/[0.08]">

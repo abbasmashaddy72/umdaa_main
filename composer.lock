@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc528b68976c838670bc66ae663bd780",
+    "content-hash": "6334b6f2cb4c9fefc1d1f1c57238d41a",
     "packages": [
         {
             "name": "asantibanez/livewire-calendar",
@@ -3294,6 +3294,95 @@
             "time": "2022-05-31T20:59:12+00:00"
         },
         {
+            "name": "openspout/openspout",
+            "version": "v3.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/openspout/openspout.git",
+                "reference": "dfbbd53b5edcd486b45a37f6a04fac33073c70f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/openspout/openspout/zipball/dfbbd53b5edcd486b45a37f6a04fac33073c70f3",
+                "reference": "dfbbd53b5edcd486b45a37f6a04fac33073c70f3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-filter": "*",
+                "ext-libxml": "*",
+                "ext-xmlreader": "*",
+                "ext-zip": "*",
+                "php": "~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0"
+            },
+            "require-dev": {
+                "ext-zlib": "*",
+                "friendsofphp/php-cs-fixer": "^3.4",
+                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "suggest": {
+                "ext-iconv": "To handle non UTF-8 CSV files (if \"php-intl\" is not already installed or is too limited)",
+                "ext-intl": "To handle non UTF-8 CSV files (if \"iconv\" is not already installed)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OpenSpout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrien Loison",
+                    "email": "adrien@box.com"
+                }
+            ],
+            "description": "PHP Library to read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way",
+            "homepage": "https://github.com/openspout/openspout",
+            "keywords": [
+                "OOXML",
+                "csv",
+                "excel",
+                "memory",
+                "odf",
+                "ods",
+                "office",
+                "open",
+                "php",
+                "read",
+                "scale",
+                "spreadsheet",
+                "stream",
+                "write",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/openspout/openspout/issues",
+                "source": "https://github.com/openspout/openspout/tree/v3.7.4"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/filippotessarotto",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Slamdunk",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-31T06:15:15+00:00"
+        },
+        {
             "name": "opis/closure",
             "version": "3.6.3",
             "source": {
@@ -4055,16 +4144,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.5",
+            "version": "v0.11.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf"
+                "reference": "77fc7270031fbc28f9a7bea31385da5c4855cb7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/c23686f9c48ca202710dbb967df8385a952a2daf",
-                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/77fc7270031fbc28f9a7bea31385da5c4855cb7a",
+                "reference": "77fc7270031fbc28f9a7bea31385da5c4855cb7a",
                 "shasum": ""
             },
             "require": {
@@ -4125,9 +4214,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.5"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.7"
             },
-            "time": "2022-05-27T18:03:49+00:00"
+            "time": "2022-07-07T13:49:11+00:00"
         },
         {
             "name": "rahulreghunath/textlocal",
@@ -4637,6 +4726,66 @@
                 }
             ],
             "time": "2022-06-28T14:29:26+00:00"
+        },
+        {
+            "name": "spatie/simple-excel",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/simple-excel.git",
+                "reference": "59577197be5ac25e69948a8148a62e3fefc06586"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/simple-excel/zipball/59577197be5ac25e69948a8148a62e3fefc06586",
+                "reference": "59577197be5ac25e69948a8148a62e3fefc06586",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.71|^9.0",
+                "openspout/openspout": "^3.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.4",
+                "spatie/phpunit-snapshot-assertions": "^4.0",
+                "spatie/temporary-directory": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\SimpleExcel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Read and write simple Excel and CSV files",
+            "homepage": "https://github.com/spatie/simple-excel",
+            "keywords": [
+                "simple-excel",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/simple-excel/issues",
+                "source": "https://github.com/spatie/simple-excel/tree/2.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-09T19:57:28+00:00"
         },
         {
             "name": "symfony/console",
@@ -7482,21 +7631,21 @@
         },
         {
             "name": "imanghafoori/laravel-microscope",
-            "version": "v1.0.263",
+            "version": "v1.0.265",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imanghafoori1/laravel-microscope.git",
-                "reference": "d6a9cf710e25569907d65f3a6a96117520e8da3b"
+                "reference": "63d64c6bb6a00d1841dfe964c32fc8f90b418d3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/d6a9cf710e25569907d65f3a6a96117520e8da3b",
-                "reference": "d6a9cf710e25569907d65f3a6a96117520e8da3b",
+                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/63d64c6bb6a00d1841dfe964c32fc8f90b418d3b",
+                "reference": "63d64c6bb6a00d1841dfe964c32fc8f90b418d3b",
                 "shasum": ""
             },
             "require": {
                 "imanghafoori/php-abstract-filesystem": "^0.1.1",
-                "imanghafoori/php-search-replace": "1.*",
+                "imanghafoori/php-search-replace": "1.1.8",
                 "imanghafoori/php-token-analyzer": "^0.1.35",
                 "imanghafoori/smart-realtime-facades": "^1.1.4",
                 "jetbrains/phpstorm-attributes": "1.*",
@@ -7542,9 +7691,9 @@
             ],
             "support": {
                 "issues": "https://github.com/imanghafoori1/laravel-microscope/issues",
-                "source": "https://github.com/imanghafoori1/laravel-microscope/tree/v1.0.263"
+                "source": "https://github.com/imanghafoori1/laravel-microscope/tree/v1.0.265"
             },
-            "time": "2022-06-30T20:59:33+00:00"
+            "time": "2022-07-06T20:56:40+00:00"
         },
         {
             "name": "imanghafoori/php-abstract-filesystem",
@@ -7598,20 +7747,19 @@
         },
         {
             "name": "imanghafoori/php-search-replace",
-            "version": "v1.1.7",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imanghafoori1/php-smart-search-replace.git",
-                "reference": "08446133719b187285dc8f2ac754ced0ddbf9564"
+                "reference": "e1fcaec433a636290813034c82c4f6ea560cbf06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imanghafoori1/php-smart-search-replace/zipball/08446133719b187285dc8f2ac754ced0ddbf9564",
-                "reference": "08446133719b187285dc8f2ac754ced0ddbf9564",
+                "url": "https://api.github.com/repos/imanghafoori1/php-smart-search-replace/zipball/e1fcaec433a636290813034c82c4f6ea560cbf06",
+                "reference": "e1fcaec433a636290813034c82c4f6ea560cbf06",
                 "shasum": ""
             },
             "require": {
-                "imanghafoori/php-token-analyzer": "^0.1.2",
                 "php": "^7.1.3|8.0.*|8.1.*"
             },
             "require-dev": {
@@ -7642,22 +7790,22 @@
             ],
             "support": {
                 "issues": "https://github.com/imanghafoori1/php-smart-search-replace/issues",
-                "source": "https://github.com/imanghafoori1/php-smart-search-replace/tree/v1.1.7"
+                "source": "https://github.com/imanghafoori1/php-smart-search-replace/tree/v1.1.8"
             },
-            "time": "2022-04-07T14:03:08+00:00"
+            "time": "2022-07-03T21:01:41+00:00"
         },
         {
             "name": "imanghafoori/php-token-analyzer",
-            "version": "v0.1.35",
+            "version": "v0.1.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imanghafoori1/php_token_analyzer.git",
-                "reference": "43337128528ebf5aa10041c42443fafb874d7e43"
+                "reference": "efaa222747875b7be57875abbb1fc05523aad224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imanghafoori1/php_token_analyzer/zipball/43337128528ebf5aa10041c42443fafb874d7e43",
-                "reference": "43337128528ebf5aa10041c42443fafb874d7e43",
+                "url": "https://api.github.com/repos/imanghafoori1/php_token_analyzer/zipball/efaa222747875b7be57875abbb1fc05523aad224",
+                "reference": "efaa222747875b7be57875abbb1fc05523aad224",
                 "shasum": ""
             },
             "require": {
@@ -7691,9 +7839,9 @@
             ],
             "support": {
                 "issues": "https://github.com/imanghafoori1/php_token_analyzer/issues",
-                "source": "https://github.com/imanghafoori1/php_token_analyzer/tree/v0.1.35"
+                "source": "https://github.com/imanghafoori1/php_token_analyzer/tree/v0.1.36"
             },
-            "time": "2022-06-16T20:03:03+00:00"
+            "time": "2022-07-06T18:28:17+00:00"
         },
         {
             "name": "imanghafoori/smart-realtime-facades",

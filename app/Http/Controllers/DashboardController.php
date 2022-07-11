@@ -10,6 +10,7 @@ class DashboardController extends Controller
     {
         view()->share('title', 'Dashboard');
     }
+
     public function index()
     {
         return view('dashboard');

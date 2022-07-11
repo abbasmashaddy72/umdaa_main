@@ -27,7 +27,8 @@
         "protonemedia/laravel-form-components": "^3.6",
         "rahulreghunath/textlocal": "^1.0",
         "silviolleite/laravelpwa": "^2.0",
-        "spatie/laravel-cookie-consent": "^3.2"
+        "spatie/laravel-cookie-consent": "^3.2",
+        "spatie/simple-excel": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
