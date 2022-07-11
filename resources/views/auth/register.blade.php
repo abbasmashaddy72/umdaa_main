@@ -1,7 +1,7 @@
 <x-login-layout>
     <x-auth.container>
         @slot('left')
-            <img alt="Rubick Tailwind HTML Admin Template" class="w-1/2 -mt-16 -intro-x"
+            <img alt="Larvel Tailwind HTML Admin Template" class="w-1/2 -mt-16 -intro-x"
                 src="{{ asset('dist/images/illustration.svg') }}">
             <div class="w-4/6 mt-10 text-4xl font-medium leading-tight text-white -intro-x">
                 {{ __('A few more clicks to sign in to your account.') }}</div>

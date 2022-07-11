@@ -2,7 +2,7 @@
     <a href="" class="flex items-center pt-4 pl-5 intro-x">
         <img alt="Rubick Tailwind HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
         <span class="hidden ml-3 text-lg text-white xl:block">
-            Rubick
+            {{ config('app.name', 'Laravel') }}
         </span>
     </a>
     <div class="my-6 side-nav__devider"></div>
@@ -12,7 +12,7 @@
                 <li class="my-6 side-nav__devider"></li>
             @else
                 <li>
-                    <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}"
+                    <a href="{{ isset($menu['route_name']) ? route($menu['route_name']) : 'javascript:;' }}"
                         class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                         <div class="side-menu__icon">
                             <i data-feather="{{ $menu['icon'] }}"></i>
@@ -31,7 +31,7 @@
                         <ul class="{{ $first_level_active_index == $menuKey ? 'side-menu__sub-open' : '' }}">
                             @foreach ($menu['sub_menu'] as $subMenuKey => $subMenu)
                                 <li>
-                                    <a href="{{ isset($subMenu['route_name']) ? route($subMenu['route_name'], $subMenu['params']) : 'javascript:;' }}"
+                                    <a href="{{ isset($subMenu['route_name']) ? route($subMenu['route_name']) : 'javascript:;' }}"
                                         class="{{ $second_level_active_index == $subMenuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                         <div class="side-menu__icon">
                                             <i data-feather="activity"></i>
@@ -51,7 +51,7 @@
                                             class="{{ $second_level_active_index == $subMenuKey ? 'side-menu__sub-open' : '' }}">
                                             @foreach ($subMenu['sub_menu'] as $lastSubMenuKey => $lastSubMenu)
                                                 <li>
-                                                    <a href="{{ isset($lastSubMenu['route_name']) ? route($lastSubMenu['route_name'], $lastSubMenu['params']) : 'javascript:;' }}"
+                                                    <a href="{{ isset($lastSubMenu['route_name']) ? route($lastSubMenu['route_name']) : 'javascript:;' }}"
                                                         class="{{ $third_level_active_index == $lastSubMenuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                                         <div class="side-menu__icon">
                                                             <i data-feather="zap"></i>
