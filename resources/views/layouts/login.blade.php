@@ -6,7 +6,7 @@
 
         @include('layouts.partials.dark-mode-switcher')
 
-        @yield('script')
+        @stack('scripts')
     </body>
 
 </x-base-layout>

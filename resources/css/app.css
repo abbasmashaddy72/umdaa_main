@@ -122,3 +122,7 @@
 @import "./components/_dark-mode-switcher.css";
 @import "./components/_notification-content.css";
 @import "./components/_notification.css";
+
+[x-cloak] {
+    display: none;
+}

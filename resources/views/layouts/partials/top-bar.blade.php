@@ -1,16 +1,11 @@
 <div class="top-bar">
     <!-- BEGIN: Breadcrumb -->
-    <nav aria-label="breadcrumb" class="hidden mr-auto -intro-x sm:flex">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Application</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-        </ol>
-    </nav>
+    {{ $breadcrumb }}
     <!-- END: Breadcrumb -->
     <!-- BEGIN: Notifications -->
     <div class="mr-auto intro-x dropdown sm:mr-6">
-        <div class="cursor-pointer dropdown-toggle notification notification--bullet" role="button"
-            aria-expanded="false" data-tw-toggle="dropdown">
+        <div class="cursor-pointer dropdown-toggle notification notification--bullet" role="button" aria-expanded="false"
+            data-tw-toggle="dropdown">
             <i data-feather="bell" class="notification__icon dark:text-slate-500"></i>
         </div>
         <div class="pt-2 notification-content dropdown-menu">
@@ -18,7 +13,8 @@
                 <div class="notification-content__title">Notifications</div>
                 <div class="relative flex items-center cursor-pointer ">
                     <div class="flex-none w-12 h-12 mr-1 image-fit">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-8.jpg">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full"
+                            src="{{ asset('dist/images/profile-8.jpg') }}">
                         <div
                             class="absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full bg-success dark:border-darkmode-600">
                         </div>
@@ -35,7 +31,8 @@
                 </div>
                 <div class="relative flex items-center mt-5 cursor-pointer">
                     <div class="flex-none w-12 h-12 mr-1 image-fit">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-8.jpg">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full"
+                            src="{{ asset('dist/images/profile-8.jpg') }}">
                         <div
                             class="absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full bg-success dark:border-darkmode-600">
                         </div>
@@ -52,7 +49,8 @@
                 </div>
                 <div class="relative flex items-center mt-5 cursor-pointer">
                     <div class="flex-none w-12 h-12 mr-1 image-fit">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-8.jpg">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full"
+                            src="{{ asset('dist/images/profile-8.jpg') }}">
                         <div
                             class="absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full bg-success dark:border-darkmode-600">
                         </div>
@@ -69,7 +67,8 @@
                 </div>
                 <div class="relative flex items-center mt-5 cursor-pointer">
                     <div class="flex-none w-12 h-12 mr-1 image-fit">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-8.jpg">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full"
+                            src="{{ asset('dist/images/profile-8.jpg') }}">
                         <div
                             class="absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full bg-success dark:border-darkmode-600">
                         </div>
@@ -86,7 +85,8 @@
                 </div>
                 <div class="relative flex items-center mt-5 cursor-pointer">
                     <div class="flex-none w-12 h-12 mr-1 image-fit">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-8.jpg">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full"
+                            src="{{ asset('dist/images/profile-8.jpg') }}">
                         <div
                             class="absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full bg-success dark:border-darkmode-600">
                         </div>

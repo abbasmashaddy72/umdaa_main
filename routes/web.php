@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__ . '/test.php';
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +22,8 @@ Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('d
 
 Route::group(['middleware' => 'auth', 'verified', 'password.confirm', 'namespace' => 'App\Http\Controllers'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('crud', CRUDController::class);
+    Route::resource('user', UserController::class);
 });
 
 require __DIR__ . '/auth.php';

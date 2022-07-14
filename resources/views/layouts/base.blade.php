@@ -9,9 +9,25 @@
 
     <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon" type="image/svg+xml">
 
-    <title>{{ config('app.name', 'Laravel') }} | {{ $title ?? '' }}</title>
+    <title>
+        @if (Route::getCurrentRoute()->middleware()[1] == 'guest')
+            {{ $title . ' | ' ?? '' }}{{ config('app.name', 'Laravel') }}
+        @else
+            @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+                {{ __('Create') . ' ' . $title . ' | ' ?? '' }}
+            @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+                {{ __('Edit') . ' ' . $title . ' | ' ?? '' }}
+            @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'show')
+                {{ __('Show') . ' ' . $title . ' | ' ?? '' }}
+            @else
+                {{ $title . ' | ' ?? '' }}
+            @endif
+            {{ config('app.name', 'Laravel') }}
+        @endif
+    </title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
 </head>
 
 {{ $slot }}
