@@ -13,7 +13,7 @@ class CrudCES extends Component
     public $title;
 
     // Custom Values
-    public $data, $permissions = [];
+    public $data, $checked = [], $permissions = [];
 
     protected $rules = [
         'title' => '',
@@ -61,7 +61,7 @@ class CrudCES extends Component
             $this->title = $data->title;
         }
         // Checked list Pending
-        // $this->checked  = array_keys(Helper::getKeyValues('PermissionRole', 'permission_id', 'permission_id', 'role_id', $this->data->id)->toArray());
+        $this->checked  = array_keys(Helper::getKeyValues('PermissionRole', 'permission_id', 'permission_id', 'role_id', $this->data->id)->toArray());
         $this->permissions = Helper::getKeyValues('permission', 'title', 'id');
     }
 
