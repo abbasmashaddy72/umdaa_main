@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')->constrained('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->text('excerpt');
             $table->string('image');

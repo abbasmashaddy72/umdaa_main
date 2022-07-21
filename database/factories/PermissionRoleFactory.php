@@ -17,7 +17,7 @@ class PermissionRoleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // Seeded but Dynamic
         ];
     }
 }

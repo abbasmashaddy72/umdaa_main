@@ -17,7 +17,7 @@ class LocalityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // Seeder
         ];
     }
 }

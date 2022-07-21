@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class ServiceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'department_id' => Department::pluck('id')[fake()->numberBetween(1, Department::count() - 1)],
+            'name' => fake()->name(),
+            'excerpt' => fake()->realText(500, 4),
+            'image' => fake()->imageUrl(640, 480),
         ];
     }
 }

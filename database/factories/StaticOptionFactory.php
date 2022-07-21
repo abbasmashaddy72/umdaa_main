@@ -17,7 +17,7 @@ class StaticOptionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // Seeder
         ];
     }
 }

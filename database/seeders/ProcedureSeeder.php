@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Procedure;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class ProcedureSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Procedure::factory()->count(rand(10, 50))->create();
     }
 }

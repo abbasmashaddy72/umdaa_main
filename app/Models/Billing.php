@@ -15,7 +15,7 @@ class Billing extends Model
         'patient_id',
         'discount',
         'round_off',
-        'mode_of_payment',
+        'mode_of_payment'
     ];
 
     public function appointment()

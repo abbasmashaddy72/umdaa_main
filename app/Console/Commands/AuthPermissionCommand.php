@@ -39,7 +39,7 @@ class AuthPermissionCommand extends Command
      */
     private function generatePermissions()
     {
-        $abilities = ['view', 'add', 'edit', 'delete'];
+        $abilities = ['list', 'show', 'create', 'edit', 'destroy'];
         $name = $this->getNameArgument();
 
         return array_map(function ($val) use ($name) {
@@ -64,7 +64,7 @@ class AuthPermissionCommand extends Command
      */
     private function generateCapPermissions()
     {
-        $abilities = ['View', 'Add', 'Edit', 'Delete'];
+        $abilities = ['List', 'Show', 'Create', 'Edit', 'Destroy'];
         $name = $this->argument('name');
 
         return array_map(function ($val) use ($name) {
@@ -95,10 +95,10 @@ class AuthPermissionCommand extends Command
         // check if its remove
         if ($is_remove = $this->option('remove')) {
             // remove permission
-            if (Permission::where('title', 'LIKE', '%' . $this->getNameArgument())->delete()) {
+            if (Permission::where('title', 'LIKE', '%' . $this->argument('name'))->delete()) {
                 $this->warn('Permissions ' . implode(', ', $permissions) . ' deleted.');
             } else {
-                $this->warn('No permissions for ' . $this->getNameArgument() . ' found!');
+                $this->warn('No permissions for ' . $this->argument('name') . ' found!');
             }
         } else {
             // create permissions

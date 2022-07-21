@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Doctor;
+use App\Models\Patient;
+use App\Models\Referral;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,10 @@ class AppointmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'doctor_id' => Doctor::pluck('id')[fake()->numberBetween(1, Doctor::count() - 1)],
+            'patient_id' => Patient::pluck('id')[fake()->numberBetween(1, Patient::count() - 1)],
+            'referral_id' => Referral::pluck('id')[fake()->numberBetween(1, Referral::count() - 1)],
+            'appointment_date' => fake()->date(),
         ];
     }
 }

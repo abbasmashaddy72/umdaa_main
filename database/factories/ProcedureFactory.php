@@ -17,7 +17,8 @@ class ProcedureFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->unique()->company(),
+            'price' => fake()->numberBetween(0, 50000)
         ];
     }
 }

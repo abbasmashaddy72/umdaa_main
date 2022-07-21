@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('locality_id')->constrained('localities')->onUpdate('cascade')->onDelete('cascade');
             $table->longText('house_no');
             $table->string('landmark');
-            $table->foreignId('locality_id')->constrained('localities')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('pin_code');
             $table->integer('registration_fee')->default(0);
             $table->longText('available_facilities')->default('[]');
             $table->string('manager_name');
-            $table->integer('manager_contact_no')->unique();
+            $table->bigInteger('manager_contact_no')->unique();
             $table->string('manager_email');
             $table->timestamps();
         });

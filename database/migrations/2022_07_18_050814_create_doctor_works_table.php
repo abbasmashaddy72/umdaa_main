@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('doctor_works', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('doctor_id')->constrained('doctors')->onUpdate('cascade')->onDelete('cascade');
             $table->string('where');
             $table->year('from');
             $table->year('to');

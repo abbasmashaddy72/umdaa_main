@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('referrals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')->constrained('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('qualification');
-            $table->foreignId('department_id')->constrained('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->string('clinic_name');
-            $table->string('contact_no')->unique();
+            $table->bigInteger('contact_no')->unique();
             $table->boolean('personal');
             $table->string('location');
             $table->timestamps();

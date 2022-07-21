@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DoctorEducation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class DoctorEducationSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DoctorEducation::factory()->count(rand(200, 500))->create();
     }
 }

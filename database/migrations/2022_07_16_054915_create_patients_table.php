@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('gender', ['Male', 'FeMale', 'Trans']);
             $table->enum('blood_group', ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']);
             $table->date('dob');
-            $table->integer('contact_no')->unique();
+            $table->bigInteger('contact_no')->unique();
             $table->longText('description')->nullable();
             $table->timestamps();
         });

@@ -22,7 +22,7 @@ class Doctor extends Model
         'consultation_fee',
         'review_ink',
         'about',
-        'career_start_date',
+        'career_start_date'
     ];
 
     public function locality()
