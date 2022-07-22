@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-ini_set('memory_limit', '2048M');
-
 use App\Models\Department;
 use App\Models\Locality;
 use Illuminate\Database\Eloquent\Factories\Factory;

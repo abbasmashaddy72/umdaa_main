@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-ini_set('memory_limit', '2048M');
-
 use App\Models\Locality;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
@@ -27,7 +25,7 @@ class PatientFactory extends Factory
             'blood_group' => Arr::random(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']),
             'dob' => fake()->date(),
             'contact_no' => fake()->unique()->numberBetween(7777777777, 999999999),
-            'description' => fake()->text(500)
+            'description' => fake()->text(500),
         ];
     }
 }

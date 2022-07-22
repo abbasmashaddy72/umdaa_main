@@ -16,36 +16,20 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $data = [
-            [
-                'title' => 'Admin'
-            ],
-            [
-                'title' => 'Nurse'
-            ],
-            [
-                'title' => 'Doctor'
-            ],
-            [
-                'title' => 'Reception'
-            ],
-            [
-                'title' => 'Employee'
-            ]
-        ];
+        $data = ['Admin', 'Nurse', 'Doctor', 'Reception', 'Employee'];
 
-        foreach ($data as $key => $item) {
-            $item = Role::create($item);
+        foreach ($data as $item) {
+            $data = Role::create(['title' => $item]);
             if ($item == 'Admin') {
-                $item->permissions()->sync(Permission::all());
+                $see = $data->permissions()->sync(Permission::all());
             } elseif ($item == 'Nurse') {
-                array_diff($item->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
+                array_diff($data->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
             } elseif ($item == 'Doctor') {
-                array_diff($item->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
+                array_diff($data->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
             } elseif ($item == 'Reception') {
-                array_diff($item->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
+                array_diff($data->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
             } else {
-                array_diff($item->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
+                array_diff($data->permissions()->sync(Permission::inRandomOrder()->limit(rand(0, count(Permission::all())))->get()));
             }
         }
     }

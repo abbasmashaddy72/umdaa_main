@@ -18,31 +18,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(rand(200, 500))->create()->each(
-            function ($user) {
-                $data = [
-                    [
-                        'title' => 'Admin'
-                    ],
-                    [
-                        'title' => 'Nurse'
-                    ],
-                    [
-                        'title' => 'Doctor'
-                    ],
-                    [
-                        'title' => 'Reception'
-                    ],
-                    [
-                        'title' => 'Employee'
-                    ]
-                ];
-
-                foreach ($data as $key => $item) {
-                    $role = Role::create($item);
-                }
-                $user->roles()->save($role)->make();
-            }
-        );
+        User::factory()->count(rand(200, 500))->create();
     }
 }
