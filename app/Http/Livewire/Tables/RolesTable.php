@@ -43,7 +43,7 @@ class RolesTable extends LivewireDatatable
                 ->filterable(),
 
             Column::callback(['id'], function ($id) {
-                return view('pages.crud.actions', ['id' => $id]);
+                return view('pages.role.actions', ['id' => $id]);
             })->excludeFromExport()->unsortable()->label('Action'),
         ];
     }

@@ -8,6 +8,11 @@ use App\Models\Procedure;
 
 class ProcedureController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Procedure');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class ProcedureController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.procedure.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class ProcedureController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.procedure.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class ProcedureController extends Controller
      */
     public function show(Procedure $procedure)
     {
-        //
+        $data = $procedure;
+
+        return view('pages.procedure.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class ProcedureController extends Controller
      */
     public function edit(Procedure $procedure)
     {
-        //
+        $data = $procedure;
+
+        return view('pages.procedure.ces', compact('data'));
     }
 
     /**

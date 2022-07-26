@@ -8,6 +8,11 @@ use App\Models\Patient;
 
 class PatientController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Patient');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.patient.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.patient.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        $data = $patient;
+
+        return view('pages.patient.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        $data = $patient;
+
+        return view('pages.patient.ces', compact('data'));
     }
 
     /**

@@ -8,6 +8,11 @@ use App\Models\Service;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Service');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.service.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.service.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        $data = $service;
+
+        return view('pages.service.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        $data = $service;
+
+        return view('pages.service.ces', compact('data'));
     }
 
     /**

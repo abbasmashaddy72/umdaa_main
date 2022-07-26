@@ -8,6 +8,11 @@ use App\Models\Branch;
 
 class BranchController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Setting');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.branch.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.branch.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        //
+        $data = $branch;
+
+        return view('pages.branch.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        //
+        $data = $branch;
+
+        return view('pages.branch.ces', compact('data'));
     }
 
     /**

@@ -8,6 +8,11 @@ use App\Models\Doctor;
 
 class DoctorController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Doctor');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.doctor.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.doctor.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+        $data = $doctor;
+
+        return view('pages.doctor.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        //
+        $data = $doctor;
+
+        return view('pages.doctor.ces', compact('data'));
     }
 
     /**

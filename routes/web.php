@@ -22,8 +22,18 @@ Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('d
 
 Route::group(['middleware' => 'auth', 'verified', 'password.confirm', 'namespace' => 'App\Http\Controllers'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-    Route::resource('crud', CRUDController::class);
-    Route::resource('user', UserController::class);
+    Route::resource('role', RoleController::class); // Role List
+    Route::resource('user', UserController::class); // User List
+    Route::resource('setting', BranchController::class); // Setting List
+    Route::resource('department', DepartmentController::class); // Department List
+    Route::resource('referral', ReferralController::class); // Referral List
+    Route::resource('procedure', ProcedureController::class); // Procedure List
+    Route::resource('patient', PatientController::class); // Patient List
+    Route::resource('service', ServiceController::class); // Service List
+    Route::resource('doctor', DoctorController::class); // Doctor List
+    Route::resource('appointment', AppointmentController::class); // Appointment List
+    Route::resource('billing', BillingController::class); // Billing List
+    Route::resource('bulk_sms', BulkSMSController::class); // BulkSMS List
 });
 
 require __DIR__ . '/auth.php';

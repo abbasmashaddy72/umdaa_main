@@ -8,6 +8,11 @@ use App\Models\Referral;
 
 class ReferralController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Referral');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class ReferralController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.referral.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class ReferralController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.referral.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class ReferralController extends Controller
      */
     public function show(Referral $referral)
     {
-        //
+        $data = $referral;
+
+        return view('pages.referral.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class ReferralController extends Controller
      */
     public function edit(Referral $referral)
     {
-        //
+        $data = $referral;
+
+        return view('pages.referral.ces', compact('data'));
     }
 
     /**

@@ -10,6 +10,7 @@ class BaseLayout extends Component
     {
         view()->share('dark_mode', session()->has('dark_mode') ? filter_var(session('dark_mode'), FILTER_VALIDATE_BOOLEAN) : false);
     }
+
     /**
      * Get the view / contents that represents the component.
      *

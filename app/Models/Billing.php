@@ -20,7 +20,7 @@ class Billing extends Model
 
     public function appointment()
     {
-        return $this->belongsTo(Appointment::class);
+        return $this->patient->appointments();
     }
 
     public function patient()

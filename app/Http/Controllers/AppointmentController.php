@@ -8,6 +8,11 @@ use App\Models\Appointment;
 
 class AppointmentController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Appointment');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.appointment.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.appointment.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+        $data = $appointment;
+
+        return view('pages.appointment.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        $data = $appointment;
+
+        return view('pages.appointment.ces', compact('data'));
     }
 
     /**

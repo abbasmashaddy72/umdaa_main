@@ -21,15 +21,67 @@ class AppLayout extends Component
                 'route_name' => 'dashboard',
             ],
             'devider',
-            'crud' => [
+            'patient' => [
+                'icon' => 'user-check',
+                'title' => 'Patient',
+                'route_name' => 'patient.index',
+            ],
+            'appointment' => [
+                'icon' => 'plus',
+                'title' => 'Appointment',
+                'route_name' => 'appointment.index',
+            ],
+            'doctor' => [
+                'icon' => 'plus-circle',
+                'title' => 'Doctor',
+                'route_name' => 'doctor.index',
+            ],
+            'billing' => [
+                'icon' => 'book',
+                'title' => 'Billing',
+                'route_name' => 'billing.index',
+            ],
+            'bulk_sms' => [
+                'icon' => 'send',
+                'title' => 'Bulk SMS',
+                'route_name' => 'bulk_sms.index',
+            ],
+            'devider',
+            'procedure' => [
+                'icon' => 'tool',
+                'title' => 'Procedure',
+                'route_name' => 'procedure.index',
+            ],
+            'department' => [
+                'icon' => 'award',
+                'title' => 'Department',
+                'route_name' => 'department.index',
+            ],
+            'referral' => [
+                'icon' => 'refresh-ccw',
+                'title' => 'Referral',
+                'route_name' => 'referral.index',
+            ],
+            'service' => [
+                'icon' => 'globe',
+                'title' => 'Service',
+                'route_name' => 'service.index',
+            ],
+            'devider',
+            'role' => [
                 'icon' => 'edit',
-                'title' => 'CRUD',
-                'route_name' => 'crud.index',
+                'title' => 'Role',
+                'route_name' => 'role.index',
             ],
             'users' => [
                 'icon' => 'users',
                 'title' => 'Users',
                 'route_name' => 'user.index',
+            ],
+            'setting' => [
+                'icon' => 'settings',
+                'title' => 'Settings',
+                'route_name' => 'setting.index',
             ]
         ];
 
@@ -58,7 +110,7 @@ class AppLayout extends Component
                 $firstLevelActiveIndex = $menuKey;
             }
 
-            if (isset($menu['sub_menu'])) {
+            if (isset($menu['sub_menu']) ?? $menu['sub_menu'] = []) {
 
                 foreach ($menu['sub_menu'] as $subMenuKey => $subMenu) {
 

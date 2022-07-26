@@ -8,6 +8,11 @@ use App\Models\BulkSMS;
 
 class BulkSMSController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Bulk SMS');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class BulkSMSController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.bulk_sms.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class BulkSMSController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.bulk_sms.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,10 @@ class BulkSMSController extends Controller
      */
     public function show(BulkSMS $bulkSMS)
     {
-        //
+        dd($bulkSMS);
+        $data = $bulkSMS;
+
+        return view('pages.bulk_sms.ces', compact('data'));
     }
 
     /**
@@ -58,7 +68,9 @@ class BulkSMSController extends Controller
      */
     public function edit(BulkSMS $bulkSMS)
     {
-        //
+        $data = $bulkSMS;
+
+        return view('pages.bulk_sms.ces', compact('data'));
     }
 
     /**

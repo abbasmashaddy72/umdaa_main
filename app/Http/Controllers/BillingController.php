@@ -8,6 +8,11 @@ use App\Models\Billing;
 
 class BillingController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('title', 'Billing');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class BillingController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.billing.index');
     }
 
     /**
@@ -25,7 +30,9 @@ class BillingController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+
+        return view('pages.billing.ces', compact('data'));
     }
 
     /**
@@ -47,7 +54,9 @@ class BillingController extends Controller
      */
     public function show(Billing $billing)
     {
-        //
+        $data = $billing;
+
+        return view('pages.billing.ces', compact('data'));
     }
 
     /**
@@ -58,7 +67,9 @@ class BillingController extends Controller
      */
     public function edit(Billing $billing)
     {
-        //
+        $data = $billing;
+
+        return view('pages.billing.ces', compact('data'));
     }
 
     /**

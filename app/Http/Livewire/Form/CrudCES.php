@@ -7,7 +7,7 @@ use App\Services\Helper;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
-class CrudCES extends Component
+class RoleCES extends Component
 {
     // Model Values
     public $title;
@@ -37,7 +37,7 @@ class CrudCES extends Component
 
         notify()->success('Role Saved Successfully!');
 
-        return $this->redirectRoute('crud.index');
+        return $this->redirectRoute('role.index');
     }
 
     public function update()
@@ -52,21 +52,21 @@ class CrudCES extends Component
 
         notify()->success('Role Updated Successfully!');
 
-        return $this->redirectRoute('crud.index');
+        return $this->redirectRoute('role.index');
     }
 
     public function mount($data)
     {
         if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
             $this->title = $data->title;
+            $this->checked  = array_keys(Helper::getKeyValues('PermissionRole', 'permission_id', 'permission_id', 'role_id', $this->data->id)->toArray());
         }
         // Checked list Pending
-        $this->checked  = array_keys(Helper::getKeyValues('PermissionRole', 'permission_id', 'permission_id', 'role_id', $this->data->id)->toArray());
         $this->permissions = Helper::getKeyValues('permission', 'title', 'id');
     }
 
     public function render()
     {
-        return view('livewire.form.crud-c-e-s');
+        return view('livewire.form.role-c-e-s');
     }
 }
