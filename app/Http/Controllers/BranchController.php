@@ -10,7 +10,7 @@ class BranchController extends Controller
 {
     public function __construct()
     {
-        view()->share('title', 'Setting');
+        view()->share('title', 'Branch');
     }
 
     /**

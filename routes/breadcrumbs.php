@@ -61,28 +61,28 @@ Breadcrumbs::for('role.show', function (BreadcrumbTrail $trail, $data) {
     $trail->push('Show ' . $data->title, route('role.show', $data));
 });
 
-// Application > Setting
-Breadcrumbs::for('setting.index', function (BreadcrumbTrail $trail) {
+// Application > Branch Setting
+Breadcrumbs::for('branch.index', function (BreadcrumbTrail $trail) {
     $trail->parent('#');
-    $trail->push('Setting', route('setting.index'));
+    $trail->push('Setting', route('branch.index'));
 });
 
-// Application > Setting > Create
-Breadcrumbs::for('setting.create', function (BreadcrumbTrail $trail) {
-    $trail->parent('setting.index');
-    $trail->push('Create Setting', route('setting.create'));
+// Application > Branch Setting > Create
+Breadcrumbs::for('branch.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('branch.index');
+    $trail->push('Create Branch Setting', route('branch.create'));
 });
 
-// Application > Setting > Edit
-Breadcrumbs::for('setting.edit', function (BreadcrumbTrail $trail, $data) {
-    $trail->parent('setting.index');
-    $trail->push('Edit Setting', route('setting.edit', $data));
+// Application > Branch Setting > Edit
+Breadcrumbs::for('branch.edit', function (BreadcrumbTrail $trail, $data) {
+    $trail->parent('branch.index');
+    $trail->push('Edit Branch Setting', route('branch.edit', $data));
 });
 
-// Application > Setting > Show
-Breadcrumbs::for('setting.show', function (BreadcrumbTrail $trail, $data) {
-    $trail->parent('setting.index');
-    $trail->push('Show Setting', route('setting.show', $data));
+// Application > Branch Setting > Show
+Breadcrumbs::for('branch.show', function (BreadcrumbTrail $trail, $data) {
+    $trail->parent('branch.index');
+    $trail->push('Show Branch Setting', route('branch.show', $data));
 });
 
 // Application > Department

@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth', 'verified', 'password.confirm', 'namespace
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('role', RoleController::class); // Role List
     Route::resource('user', UserController::class); // User List
-    Route::resource('setting', BranchController::class); // Setting List
+    Route::resource('branch', BranchController::class); // Setting List
     Route::resource('department', DepartmentController::class); // Department List
     Route::resource('referral', ReferralController::class); // Referral List
     Route::resource('procedure', ProcedureController::class); // Procedure List

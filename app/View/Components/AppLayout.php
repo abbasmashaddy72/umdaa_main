@@ -81,7 +81,7 @@ class AppLayout extends Component
             'setting' => [
                 'icon' => 'settings',
                 'title' => 'Settings',
-                'route_name' => 'setting.index',
+                'route_name' => 'branch.index',
             ]
         ];
 

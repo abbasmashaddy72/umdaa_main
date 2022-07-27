@@ -8,6 +8,6 @@
         <x-slot name="breadcrumb">{{ Breadcrumbs::render('bulk_sms.show', $data) }}</x-slot>
     @endif
 
-    @livewire('form.bulk_sms-c-e-s', ['data' => $data])
+    @livewire('form.bulk-sms-c', ['data' => $data])
 
 </x-app-layout>
