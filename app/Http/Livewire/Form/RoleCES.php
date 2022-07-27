@@ -33,7 +33,7 @@ class RoleCES extends Component
         unset($validatedData['permissions']);
         $role = Role::create($validatedData);
 
-        Role::find($role->id)->permissions()->attach($validatedData['permissions']);
+        Role::find($role->id)->permissions()->attach($role);
 
         notify()->success('Role Saved Successfully!');
 

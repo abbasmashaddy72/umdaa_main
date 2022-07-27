@@ -3,7 +3,7 @@
     {{ $breadcrumb }}
     <!-- END: Breadcrumb -->
     <!-- BEGIN: Notifications -->
-    <div class="mr-auto intro-x dropdown sm:mr-6">
+    <div class="mr-auto dropdown sm:mr-6">
         <div class="cursor-pointer dropdown-toggle notification notification--bullet" role="button" aria-expanded="false"
             data-tw-toggle="dropdown">
             <i data-feather="bell" class="notification__icon dark:text-slate-500"></i>
@@ -106,7 +106,7 @@
     </div>
     <!-- END: Notifications -->
     <!-- BEGIN: Account Menu -->
-    <div class="w-10 h-10 intro-x dropdown">
+    <div class="w-10 h-10 dropdown">
         <div class="relative flex items-center justify-center w-10 h-10 text-xl text-white uppercase rounded-full shadow-lg bg-primary dropdown-toggle"
             role="button" aria-expanded="false" data-tw-toggle="dropdown">
             {{ Auth::user()->initials }}</div>
