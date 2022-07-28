@@ -16,6 +16,6 @@ class Locality extends Model
 
     public function cities()
     {
-        return $this->belongsToMany(City::class);
+        return $this->hasMany(City::class);
     }
 }
