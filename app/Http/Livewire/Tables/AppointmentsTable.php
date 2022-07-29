@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use Mediconesystems\LivewireDatatables\TimeColumn;
 
 class AppointmentsTable extends LivewireDatatable
 {
@@ -41,8 +42,12 @@ class AppointmentsTable extends LivewireDatatable
                 ->label('Referral Name')
                 ->filterable(),
 
-            DateColumn::name('appointment_date')
+            DateColumn::name('date')
                 ->defaultSort(today())
+                ->filterable(),
+
+            TimeColumn::name('time')
+                ->defaultSort(now())
                 ->filterable(),
 
             Column::callback(['id'], function ($id) {

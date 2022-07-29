@@ -19,6 +19,11 @@ class Patient extends Model
         'description'
     ];
 
+    public function getPatientAttribute()
+    {
+        return $this->name . ', ' . $this->contact_no;
+    }
+
     public function locality()
     {
         return $this->belongsTo(Locality::class);

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\StaticOption;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -83,5 +84,17 @@ class Helper
     {
         StaticOption::where('option_name', $key)->delete();
         return true;
+    }
+
+    // Time Slots
+    public static function getTimeSlots($start, $end, $gap)
+    {
+        $period = new CarbonPeriod($start, $gap . ' minutes', $end); // for create use 24 hours format later change format
+        $slots = [];
+        foreach ($period as $item) {
+            array_push($slots, $item->format("h:i A"));
+        }
+
+        return $slots;
     }
 }

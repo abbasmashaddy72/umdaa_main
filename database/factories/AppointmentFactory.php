@@ -23,7 +23,8 @@ class AppointmentFactory extends Factory
             'doctor_id' => Doctor::pluck('id')[fake()->numberBetween(1, Doctor::count() - 1)],
             'patient_id' => Patient::pluck('id')[fake()->numberBetween(1, Patient::count() - 1)],
             'referral_id' => Referral::pluck('id')[fake()->numberBetween(1, Referral::count() - 1)],
-            'appointment_date' => fake()->date(),
+            'date' => fake()->date(),
+            'time' => fake()->time(),
         ];
     }
 }

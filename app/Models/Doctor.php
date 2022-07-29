@@ -25,6 +25,11 @@ class Doctor extends Model
         'career_start_date'
     ];
 
+    public function getDoctorAttribute()
+    {
+        return $this->name . ', ' . $this->department->name;
+    }
+
     public function locality()
     {
         return $this->belongsTo(Locality::class);

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('day', ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
             $table->time('from');
             $table->time('to');
-            $table->time('appointment_duration')->default(15);
+            $table->integer('appointment_duration')->default(15);
             $table->timestamps();
         });
     }

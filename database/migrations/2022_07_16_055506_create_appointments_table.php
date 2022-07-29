@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('doctor_id')->constrained('doctors')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('patient_id')->constrained('patients')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('referral_id')->constrained('referrals')->onUpdate('cascade')->onDelete('cascade');
-            $table->date('appointment_date');
+            $table->foreignId('referral_id')->nullable()->constrained('referrals')->onUpdate('cascade')->onDelete('cascade');
+            $table->date('date');
+            $table->time('time');
             $table->timestamps();
         });
     }

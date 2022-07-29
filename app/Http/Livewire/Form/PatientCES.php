@@ -12,7 +12,7 @@ class PatientCES extends Component
     public $name, $locality_id, $gender, $blood_group, $dob, $contact_no, $description;
 
     // Custom Values
-    public $data, $selectedLocalityId = null;
+    public $data = null, $selectedLocalityId = null;
 
     // Listeners
     protected $listeners = ['locality_changed' => 'locality_changed'];
@@ -62,9 +62,9 @@ class PatientCES extends Component
         return $this->redirectRoute('patient.index');
     }
 
-    public function mount($data)
+    public function mount($data = null)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
+        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create' && $data != null) {
             $this->name = $data->name;
             $this->selectedLocalityId = $data->locality_id;
             $this->gender = $data->gender;

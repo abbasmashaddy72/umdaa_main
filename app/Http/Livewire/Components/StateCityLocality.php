@@ -13,11 +13,11 @@ class StateCityLocality extends Component
     public $cities;
     public $localities;
 
-    public $selectedState = Null;
-    public $selectedCity = Null;
-    public $selectedLocality = Null;
+    public $selectedState = null;
+    public $selectedCity = null;
+    public $selectedLocality = null;
 
-    public function mount($selectedLocality = Null)
+    public function mount($selectedLocality = null)
     {
         $this->states = Helper::getKeyValues('State', 'name', 'id');
         $this->cities = collect();
@@ -42,7 +42,7 @@ class StateCityLocality extends Component
     public function updatedSelectedState($state)
     {
         $this->cities = Helper::getKeyValues('City', 'name', 'id', 'state_id', $state);
-        $this->selectedCity = Null;
+        $this->selectedCity = null;
     }
 
     public function updatedSelectedCity($city)

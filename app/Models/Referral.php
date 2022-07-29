@@ -19,6 +19,11 @@ class Referral extends Model
         'location',
     ];
 
+    public function getDoctorAttribute()
+    {
+        return $this->name . ', ' . $this->qualification;
+    }
+
     public function department()
     {
         return $this->belongsTo(Department::class);

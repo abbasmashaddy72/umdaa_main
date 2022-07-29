@@ -13,12 +13,18 @@ class Appointment extends Model
         'doctor_id',
         'patient_id',
         'referral_id',
-        'appointment_date'
+        'date',
+        'time'
     ];
 
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function doctorSchedule()
+    {
+        return $this->belongsTo(DoctorSchedule::class, 'doctor_id');
     }
 
     public function patient()
