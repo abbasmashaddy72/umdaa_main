@@ -16,6 +16,7 @@ class Doctor extends Model
         'gender',
         'dob',
         'contact_no',
+        'qualification',
         'registration_no',
         'department_id',
         'registration_fee',
@@ -27,7 +28,7 @@ class Doctor extends Model
 
     public function getDoctorAttribute()
     {
-        return $this->name . ', ' . $this->department->name;
+        return $this->name . ', ' . $this->qualification;
     }
 
     public function locality()

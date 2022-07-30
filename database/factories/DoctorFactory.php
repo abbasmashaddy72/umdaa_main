@@ -28,6 +28,7 @@ class DoctorFactory extends Factory
             'gender' => $gender,
             'dob' => fake()->date(),
             'contact_no' => fake()->unique()->numberBetween(7777777777, 999999999),
+            'qualification' => Arr::random(['MBBS', 'MD', 'DM']),
             'registration_no' => fake()->unique()->numberBetween(11111, 99999),
             'department_id' => Department::pluck('id')[fake()->numberBetween(1, Department::count() - 1)],
             'registration_fee' => fake()->numberBetween(0, 500),

@@ -9,7 +9,7 @@ use Livewire\Component;
 class DoctorCES extends Component
 {
     // Model Values
-    public $name, $email, $locality_id, $gender, $dob, $contact_no, $registration_no, $department_id, $registration_fee, $consultation_fee, $review_link, $about, $career_start_date;
+    public $name, $email, $locality_id, $gender, $dob, $contact_no, $qualification, $registration_no, $department_id, $registration_fee, $consultation_fee, $review_link, $about, $career_start_date;
 
     // Custom Values
     public $data, $selectedLocalityId = null;
@@ -30,6 +30,7 @@ class DoctorCES extends Component
         'gender' => '',
         'dob' => '',
         'contact_no' => '',
+        'qualification' => '',
         'registration_no' => '',
         'department_id' => '',
         'registration_fee' => '',
@@ -77,6 +78,7 @@ class DoctorCES extends Component
             $this->gender = $data->gender;
             $this->dob = $data->dob;
             $this->contact_no = $data->contact_no;
+            $this->qualification = $data->qualification;
             $this->registration_no = $data->registration_no;
             $this->department_id = $data->department_id;
             $this->registration_fee = $data->registration_fee;

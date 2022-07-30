@@ -14,6 +14,8 @@
 
         <x-form-input name="contact_no" label="Contact No." type="number" />
 
+        <x-form-input name="qualification" label="Qualification" type="text" />
+
         <x-form-input name="registration_no" label="Registration No." type="text" />
 
         <x-form-select name="department_id" label="Select Department" :options="Helper::getKeyValues('Department', 'name', 'id')" placeholder="Please Select" />

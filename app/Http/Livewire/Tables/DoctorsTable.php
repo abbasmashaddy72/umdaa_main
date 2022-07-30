@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use Mediconesystems\LivewireDatatables\NumberColumn;
 
 class DoctorsTable extends LivewireDatatable
 {
@@ -46,14 +47,18 @@ class DoctorsTable extends LivewireDatatable
                 ->label('Date of Birth')
                 ->filterable(),
 
+            Column::name('qualification')
+                ->label('Qualification')
+                ->filterable(),
+
             Column::name('registration_no')
                 ->label('Registration No.'),
 
-            Column::name('registration_fee')
+            NumberColumn::name('registration_fee')
                 ->label('Registration Fee')
                 ->filterable(),
 
-            Column::name('consultation_fee')
+            NumberColumn::name('consultation_fee')
                 ->label('Consultation Fee')
                 ->filterable(),
 
