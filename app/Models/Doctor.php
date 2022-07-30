@@ -20,7 +20,7 @@ class Doctor extends Model
         'department_id',
         'registration_fee',
         'consultation_fee',
-        'review_ink',
+        'review_link',
         'about',
         'career_start_date'
     ];

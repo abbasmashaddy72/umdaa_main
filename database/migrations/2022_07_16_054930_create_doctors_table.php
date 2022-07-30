@@ -22,10 +22,10 @@ return new class extends Migration
             $table->enum('gender', ['Male', 'FeMale', 'Trans']);
             $table->date('dob');
             $table->bigInteger('contact_no')->unique();
-            $table->integer('registration_no')->unique();
+            $table->string('registration_no')->unique();
             $table->integer('registration_fee')->default(0);
             $table->integer('consultation_fee');
-            $table->text('review_ink');
+            $table->text('review_link');
             $table->longText('about');
             $table->date('career_start_date');
             $table->timestamps();

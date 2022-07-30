@@ -32,7 +32,7 @@ class DoctorFactory extends Factory
             'department_id' => Department::pluck('id')[fake()->numberBetween(1, Department::count() - 1)],
             'registration_fee' => fake()->numberBetween(0, 500),
             'consultation_fee' => fake()->numberBetween(100, 1500),
-            'review_ink' => fake()->imageUrl(640, 480),
+            'review_link' => fake()->imageUrl(640, 480),
             'about' => fake()->realText(5000, 4),
             'career_start_date' => fake()->date(),
         ];
