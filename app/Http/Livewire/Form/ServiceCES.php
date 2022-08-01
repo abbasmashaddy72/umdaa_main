@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Form;
 
 use App\Models\Service;
+use App\Services\Helper;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -53,7 +54,7 @@ class ServiceCES extends Component
 
     public function mount($data)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
+        if (Helper::getRouteAction() != 'create') {
             $this->department_id = $data->department_id;
             $this->name = $data->name;
             $this->excerpt = $data->excerpt;

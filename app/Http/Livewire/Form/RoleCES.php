@@ -57,7 +57,7 @@ class RoleCES extends Component
 
     public function mount($data)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
+        if (Helper::getRouteAction() != 'create') {
             $this->title = $data->title;
             $this->checked  = array_keys(Helper::getKeyValues('PermissionRole', 'permission_id', 'permission_id', 'role_id', $this->data->id)->toArray());
         }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Form;
 
 use App\Models\Doctor;
+use App\Services\Helper;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
@@ -71,7 +72,7 @@ class DoctorCES extends Component
 
     public function mount($data)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
+        if (Helper::getRouteAction() != 'create') {
             $this->name = $data->name;
             $this->email = $data->email;
             $this->selectedLocalityId = $data->locality_id;

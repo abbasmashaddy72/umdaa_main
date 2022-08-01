@@ -7,6 +7,7 @@ use App\Models\Billing;
 use App\Models\Doctor;
 use App\Models\DoctorSchedule;
 use App\Models\Procedure;
+use App\Services\Helper;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
@@ -117,7 +118,7 @@ class AppointmentCES extends Component
 
     public function mount($data)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
+        if (Helper::getRouteAction() != 'create') {
             $this->doctor_id = $data->doctor_id;
             $this->patient_id = $data->patient_id;
             $this->referral_id = $data->referral_id;

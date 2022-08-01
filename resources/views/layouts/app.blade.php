@@ -21,11 +21,11 @@
                 <!-- END: Top Bar -->
                 <div class="flex items-center mt-8 intro-y">
                     <h2 class="mr-auto text-lg font-medium">
-                        @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+                        @if (Helper::getRouteAction() == 'create')
                             {{ __('Create') }} {{ $title }}
-                        @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+                        @elseif(Helper::getRouteAction() == 'edit')
                             {{ __('Edit') }} {{ $title }}
-                        @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'show')
+                        @elseif(Helper::getRouteAction() == 'show')
                             {{ __('Show') }} {{ $title }}
                         @else
                             {{ $title }}

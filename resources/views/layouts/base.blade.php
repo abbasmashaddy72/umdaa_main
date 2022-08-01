@@ -13,11 +13,11 @@
         @if (Route::getCurrentRoute()->middleware()[1] == 'guest')
             {{ $title . ' | ' ?? '' }}{{ config('app.name', 'Laravel') }}
         @else
-            @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+            @if (Helper::getRouteAction() == 'create')
                 {{ __('Create') . ' ' . $title . ' | ' ?? '' }}
-            @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+            @elseif(Helper::getRouteAction() == 'edit')
                 {{ __('Edit') . ' ' . $title . ' | ' ?? '' }}
-            @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'show')
+            @elseif(Helper::getRouteAction() == 'show')
                 {{ __('Show') . ' ' . $title . ' | ' ?? '' }}
             @else
                 {{ $title . ' | ' ?? '' }}

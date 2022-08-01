@@ -4,9 +4,9 @@
 <div class="col-span-12 intro-y lg:col-span-6">
     <!-- BEGIN: Form Layout -->
     <div class="p-5 intro-y box" wire:ignore>
-        @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+        @if (Helper::getRouteAction() == 'create')
             <form wire:submit.prevent="store">
-            @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+            @elseif(Helper::getRouteAction() == 'edit')
                 <form wire:submit.prevent="update">
                 @else
                     <form id="form">
@@ -32,11 +32,11 @@
 
         <div class="mt-5 text-right" wire:ignore>
             @if ($save == true)
-                @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+                @if (Helper::getRouteAction() == 'create')
                     <x-submit-button>
                         {{ __('Save') }}
                     </x-submit-button>
-                @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+                @elseif(Helper::getRouteAction() == 'edit')
                     <x-submit-button>
                         {{ __('Update') }}
                     </x-submit-button>
@@ -47,7 +47,7 @@
         </form>
     </div>
 </div>
-@if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'show')
+@if (Helper::getRouteAction() == 'show')
     @push('scripts')
         <script>
             var form = document.getElementById("form");

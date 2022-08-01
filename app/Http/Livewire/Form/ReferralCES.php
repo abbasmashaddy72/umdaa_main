@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Form;
 
 use App\Models\Referral;
+use App\Services\Helper;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
@@ -53,7 +54,7 @@ class ReferralCES extends Component
 
     public function mount($data)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
+        if (Helper::getRouteAction() != 'create') {
             $this->name = $data->name;
             $this->qualification = $data->qualification;
             $this->department_id = $data->department_id;

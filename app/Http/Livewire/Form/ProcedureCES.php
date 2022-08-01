@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Form;
 
 use App\Models\Procedure;
+use App\Services\Helper;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
@@ -48,7 +49,7 @@ class ProcedureCES extends Component
 
     public function mount($data = null)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create' && $data != null) {
+        if (Helper::getRouteAction() != 'create' && $data != null) {
             $this->name = $data->name;
             $this->price = $data->price;
         }

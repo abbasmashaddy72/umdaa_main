@@ -1,9 +1,9 @@
 <x-app-layout>
     <div class="grid grid-cols-12 gap-5 mt-5">
 
-        @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+        @if (Helper::getRouteAction() == 'create')
             <x-slot name="breadcrumb">{{ Breadcrumbs::render('appointment.create') }}</x-slot>
-        @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+        @elseif(Helper::getRouteAction() == 'edit')
             <x-slot name="breadcrumb">{{ Breadcrumbs::render('appointment.edit', $data) }}</x-slot>
         @else
             <x-slot name="breadcrumb">{{ Breadcrumbs::render('appointment.show', $data) }}</x-slot>

@@ -6,6 +6,7 @@ use App\Models\StaticOption;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class Helper
 {
@@ -96,5 +97,11 @@ class Helper
         }
 
         return $slots;
+    }
+
+    // Route Action
+    public static function getRouteAction()
+    {
+        return substr(strstr(Route::currentRouteAction(), '@'), 1);
     }
 }

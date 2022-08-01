@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Form;
 
 use App\Models\User;
+use App\Services\Helper;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
@@ -66,7 +67,7 @@ class UserCES extends Component
 
     public function mount($data)
     {
-        if (substr(strstr(Route::currentRouteAction(), '@'), 1) != 'create') {
+        if (Helper::getRouteAction() != 'create') {
             $this->name = $data->name;
             $this->email = $data->email;
             $this->password = $data->password;
