@@ -10,8 +10,14 @@ class Service extends Model
     use HasFactory;
 
     protected $fillable = [
+        'department_id',
         'name',
         'excerpt',
         'image'
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

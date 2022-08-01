@@ -13,7 +13,7 @@ class ServicesTable extends LivewireDatatable
 
     public function builder()
     {
-        return Service::query();
+        return Service::query()->with('department');
     }
 
     public function columns()
@@ -27,6 +27,10 @@ class ServicesTable extends LivewireDatatable
 
             Column::name('name')
                 ->label('Name')
+                ->filterable(),
+
+            Column::name('department.name')
+                ->label('Department Name')
                 ->filterable(),
 
             Column::name('excerpt')
