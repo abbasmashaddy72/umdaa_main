@@ -1,13 +1,15 @@
 <x-app-layout>
+    <div class="grid grid-cols-12 gap-5 mt-5">
 
-    @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
-        <x-slot name="breadcrumb">{{ Breadcrumbs::render('patient.create') }}</x-slot>
-    @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
-        <x-slot name="breadcrumb">{{ Breadcrumbs::render('patient.edit', $data) }}</x-slot>
-    @else
-        <x-slot name="breadcrumb">{{ Breadcrumbs::render('patient.show', $data) }}</x-slot>
-    @endif
+        @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+            <x-slot name="breadcrumb">{{ Breadcrumbs::render('patient.create') }}</x-slot>
+        @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+            <x-slot name="breadcrumb">{{ Breadcrumbs::render('patient.edit', $data) }}</x-slot>
+        @else
+            <x-slot name="breadcrumb">{{ Breadcrumbs::render('patient.show', $data) }}</x-slot>
+        @endif
 
-    @livewire('form.patient-c-e-s', ['data' => $data])
+        @livewire('form.patient-c-e-s', ['data' => $data])
 
+    </div>
 </x-app-layout>

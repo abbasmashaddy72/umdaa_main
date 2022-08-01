@@ -35,7 +35,12 @@ class AppointmentCES extends Component
 
     public function calculate()
     {
-        $addTotalPayment =  $this->doctorRegistrationFee[0] + $this->doctorConsultationFee[0] + @$this->procedureFee[0] ?: 0;
+        if (Appointment::where('patient_id', $this->patient_id)->count() > 0) {
+            $this->doctorRegistrationFee = 0;
+            $addTotalPayment =  $this->doctorRegistrationFee + $this->doctorConsultationFee[0] + @$this->procedureFee[0] ?: 0;
+        } else {
+            $addTotalPayment =  $this->doctorRegistrationFee[0] + $this->doctorConsultationFee[0] + @$this->procedureFee[0] ?: 0;
+        }
         $discountTotalPayment = $addTotalPayment - (($addTotalPayment / 100) * $this->discount ?? 0);
         $this->totalPayment = $discountTotalPayment - $this->round_off ?? 0;
     }

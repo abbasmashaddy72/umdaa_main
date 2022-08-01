@@ -1,3 +1,6 @@
+@props([
+    'save' => 'true',
+])
 <div class="col-span-12 intro-y lg:col-span-6">
     <!-- BEGIN: Form Layout -->
     <div class="p-5 intro-y box" wire:ignore>
@@ -28,15 +31,17 @@
         {{ $slot }}
 
         <div class="mt-5 text-right" wire:ignore>
-            @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
-                <x-submit-button>
-                    {{ __('Save') }}
-                </x-submit-button>
-            @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
-                <x-submit-button>
-                    {{ __('Update') }}
-                </x-submit-button>
-            @else
+            @if ($save == true)
+                @if (substr(strstr(Route::currentRouteAction(), '@'), 1) == 'create')
+                    <x-submit-button>
+                        {{ __('Save') }}
+                    </x-submit-button>
+                @elseif(substr(strstr(Route::currentRouteAction(), '@'), 1) == 'edit')
+                    <x-submit-button>
+                        {{ __('Update') }}
+                    </x-submit-button>
+                @else
+                @endif
             @endif
         </div>
         </form>

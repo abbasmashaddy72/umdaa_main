@@ -31,6 +31,11 @@ class Doctor extends Model
         return $this->name . ', ' . $this->qualification;
     }
 
+    public function getDoctorNumberAttribute()
+    {
+        return $this->name . ', ' . $this->contact_no;
+    }
+
     public function locality()
     {
         return $this->belongsTo(Locality::class);
