@@ -4,8 +4,6 @@
 
         {{ $slot }}
 
-        @include('layouts.partials.dark-mode-switcher')
-
         @stack('scripts')
     </body>
 

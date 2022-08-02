@@ -16,7 +16,7 @@ class ReferralCES extends Component
     public $data, $selectedLocalityId = null;
 
     protected $rules = [
-        'name' => '',
+        'name' => 'required|string|min:10',
         'qualification' => '',
         'department_id' => '',
         'clinic_name' => '',

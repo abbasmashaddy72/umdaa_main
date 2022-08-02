@@ -41,7 +41,7 @@
 
         <x-form-input name="discount" wire:click="calculate()" label="Discount" type="number" />
 
-        <x-form-input name="round_off" wire:click="calculate()" label="Round Off" type="number" />
+        <x-form-input name="round_off" wire:click="calculate()" label="Round Off" type="number" step=".01" />
 
         <x-form-input name="totalPayment" label="Total Payment" type="number" disabled />
 

@@ -44,9 +44,6 @@
 
         </div>
         <x:notify-messages />
-        <!-- BEGIN: Dark Mode Switcher-->
-        @include('layouts.partials.dark-mode-switcher')
-        <!-- END: Dark Mode Switcher-->
         @livewireScripts
         @notifyJs
         @stack('scripts')

@@ -18,8 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
-
 Route::group(['middleware' => 'auth', 'verified', 'password.confirm', 'namespace' => 'App\Http\Controllers'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('role', RoleController::class); // Role List
