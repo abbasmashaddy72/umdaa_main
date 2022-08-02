@@ -1,12 +1,18 @@
 @props([
     'save' => 'true',
 ])
+@php
+$string = Route::currentRouteAction();
+$prefix = 'Controllers\\';
+$index = strpos($string, $prefix) + strlen($prefix);
+$result = substr($string, $index);
+@endphp
 <div class="col-span-12 intro-y lg:col-span-6">
     <!-- BEGIN: Form Layout -->
     <div class="p-5 intro-y box" wire:ignore>
         @if (Helper::getRouteAction() == 'create')
             <form wire:submit.prevent="store">
-            @elseif(Helper::getRouteAction() == 'edit')
+            @elseif(Helper::getRouteAction() == 'edit' || $result == 'BranchController@index')
                 <form wire:submit.prevent="update">
                 @else
                     <form id="form">
@@ -36,7 +42,7 @@
                     <x-submit-button>
                         {{ __('Save') }}
                     </x-submit-button>
-                @elseif(Helper::getRouteAction() == 'edit')
+                @elseif(Helper::getRouteAction() == 'edit' || $result == 'BranchController@index')
                     <x-submit-button>
                         {{ __('Update') }}
                     </x-submit-button>
