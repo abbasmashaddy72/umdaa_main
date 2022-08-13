@@ -8,7 +8,6 @@ use App\Models\Doctor;
 use App\Models\DoctorSchedule;
 use App\Models\Procedure;
 use App\Services\Helper;
-use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
 class AppointmentCES extends Component
@@ -26,12 +25,13 @@ class AppointmentCES extends Component
         $this->appointment_dates = DoctorSchedule::where('doctor_id', $doctor)->get();
         $this->doctorRegistrationFee = Doctor::where('id', $doctor)->pluck('registration_fee');
         $this->doctorConsultationFee = Doctor::where('id', $doctor)->pluck('consultation_fee');
-        $this->emitSelf('refreshComponent');
+        $this->calculate();
     }
 
     public function updatedProcedureId($procedure)
     {
         $this->procedureFee = Procedure::where('id', $procedure)->pluck('price');
+        $this->calculate();
     }
 
     public function calculate()
@@ -74,6 +74,7 @@ class AppointmentCES extends Component
         unset($validatedData['discount']);
         unset($validatedData['round_off']);
         unset($validatedData['mode_of_payment']);
+        $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
 
         $appointment = Appointment::create($validatedData);
         Billing::create([
@@ -101,6 +102,7 @@ class AppointmentCES extends Component
         unset($validatedData['discount']);
         unset($validatedData['round_off']);
         unset($validatedData['mode_of_payment']);
+        $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
 
         Appointment::where('id', $this->data->id)->update($validatedData);
         Billing::where('appointment_id', $this->data->id)->update([

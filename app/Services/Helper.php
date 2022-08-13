@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\StaticOption;
+use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -90,7 +91,8 @@ class Helper
     // Time Slots
     public static function getTimeSlots($start, $end, $gap)
     {
-        $period = new CarbonPeriod($start, $gap . ' minutes', $end); // for create use 24 hours format later change format
+        // $period = new CarbonPeriod($start, $gap . ' minutes', $end); // for create use 24 hours format later change format
+        $period = Carbon::parse($start)->toPeriod($end, $gap . ' minutes');
         $slots = [];
         foreach ($period as $item) {
             array_push($slots, $item->format("h:i A"));

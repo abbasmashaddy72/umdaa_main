@@ -2,7 +2,7 @@
     @wire('debounce.200ms')
         <x-form-select name="patient_id" label="Select Patient" :options="['New Patient' => 'New Patient'] + Helper::getKeyValues('Patient', 'patient', 'id')->toArray()" placeholder="Please Select" />
 
-        <div>
+        <div class="mt-2 shadow-md">
             @if ($this->patient_id == 'New Patient')
                 @livewire('form.patient-c-e-s', key(Str::random(10)))
             @endif
@@ -13,18 +13,22 @@
 
         <x-form-input name="date" label="Select Date" type="date" />
 
-        <x-form-input name="time" label="Select Time" type="time" />
-
-        <div>
-            @if (!empty($this->doctor_id))
-                @foreach ($appointment_dates as $key => $value)
-                    <x-form-label label="{{ $value->day }}" />
+        @if (!empty($this->doctor_id))
+            @foreach ($appointment_dates as $key => $value)
+                <x-form-label label="{{ $value->day }}" />
+                <div class="grid grid-cols-12 gap-4 mt-5 gap-y-5">
                     @foreach (Helper::getTimeSlots($value->from, $value->to, $value->appointment_duration) as $item)
-                        <x-form-radio name="time" label="{{ $item }}" :wire:key="$loop->index" />
+                        <div class="col-span-12 intro-y sm:col-span-2">
+                            <label class="inline-flex items-center">
+                                <input wire:key="5" type="radio" wire:model="time.{{ $item }}"
+                                    name="time.{{ $item }}" value="{{ $item }}">
+                                <span class="ml-2">{{ $item }}</span>
+                            </label>
+                        </div>
                     @endforeach
-                @endforeach
-            @endif
-        </div>
+                </div>
+            @endforeach
+        @endif
 
         <x-form-select name="referral_id" label="Select Referral Doctor" :options="Helper::getKeyValues('Referral', 'doctor', 'id')" placeholder="Please Select" />
 

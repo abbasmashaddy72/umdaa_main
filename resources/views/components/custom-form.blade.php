@@ -1,5 +1,6 @@
 @props([
     'save' => 'true',
+    'form' => 'true',
 ])
 @php
 $string = Route::currentRouteAction();
@@ -9,15 +10,19 @@ $result = substr($string, $index);
 @endphp
 <div class="col-span-12 intro-y lg:col-span-6">
     <!-- BEGIN: Form Layout -->
-    <div class="p-5 intro-y box" wire:ignore>
-        @if (Helper::getRouteAction() == 'create')
-            <form wire:submit.prevent="store">
-            @elseif(Helper::getRouteAction() == 'edit' || $result == 'BranchController@index')
-                <form wire:submit.prevent="update">
-                @else
-                    <form id="form">
-        @endif
-        @csrf
+    <div class="p-5 intro-y box">
+        <div wire:ignore>
+            @if ($form == true)
+                @if (Helper::getRouteAction() == 'create')
+                    <form wire:submit.prevent="store">
+                    @elseif(Helper::getRouteAction() == 'edit' || $result == 'BranchController@index')
+                        <form wire:submit.prevent="update">
+                        @else
+                            <form id="form">
+                @endif
+                @csrf
+            @endif
+        </div>
 
         <div wire:loading.delay wire:target="doctor_id">
             <div role="status" class="mt-4">
@@ -34,7 +39,9 @@ $result = substr($string, $index);
             </div>
         </div>
 
-        {{ $slot }}
+        <div>
+            {{ $slot }}
+        </div>
 
         <div class="mt-5 text-right" wire:ignore>
             @if ($save == true)
@@ -50,7 +57,9 @@ $result = substr($string, $index);
                 @endif
             @endif
         </div>
-        </form>
+        @if ($form == true)
+            </form>
+        @endif
     </div>
 </div>
 @if (Helper::getRouteAction() == 'show')
