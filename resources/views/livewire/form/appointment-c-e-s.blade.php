@@ -1,55 +1,27 @@
-<x-custom-form>
+<x-steps-form>
+    <ul
+        class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+        @for ($i = 1; $i <= $totalSteps; $i++)
+            <x-step.wizard-step :active="$i == $step">{{ __('Step') }} {{ $i }}</x-step.wizard-step>
+        @endfor
+    </ul>
+
     @wire('debounce.200ms')
-        <x-form-select name="patient_id" label="Select Patient" :options="['New Patient' => 'New Patient'] + Helper::getKeyValues('Patient', 'patient', 'id')->toArray()" placeholder="Please Select" />
-
-        <div class="mt-2 shadow-md">
-            @if ($this->patient_id == 'New Patient')
-                @livewire('form.patient-c-e-s', key(Str::random(10)))
-            @endif
+        <div class="mt-2">
+            <div class="min-h-full">
+                @include('livewire.components.appointments.step' . $step)
+            </div>
         </div>
+    @endwire
 
-        <x-form-select name="doctor_id" wire:click="calculate()" label="Select Doctor" :options="Helper::getKeyValues('Doctor', 'doctor', 'id')"
-            placeholder="Please Select" />
-
-        <x-form-input name="date" label="Select Date" type="date" />
-
-        @if (!empty($this->doctor_id))
-            @foreach ($appointment_dates as $key => $value)
-                <x-form-label label="{{ $value->day }}" />
-                <div class="grid grid-cols-12 gap-4 mt-5 gap-y-5">
-                    @foreach (Helper::getTimeSlots($value->from, $value->to, $value->appointment_duration) as $item)
-                        <div class="col-span-12 intro-y sm:col-span-2">
-                            <label class="inline-flex items-center">
-                                <input wire:key="5" type="radio" wire:model="time.{{ $item }}"
-                                    name="time.{{ $item }}" value="{{ $item }}">
-                                <span class="ml-2">{{ $item }}</span>
-                            </label>
-                        </div>
-                    @endforeach
-                </div>
-            @endforeach
+    <div class="flex justify-between mt-4">
+        @if ($step != 1)
+            <x-step.wizard-button class="ml-4" wire:click="moveBack">Previous</x-step.wizard-button>
+        @else
+            &nbsp;
         @endif
 
-        <x-form-select name="referral_id" label="Select Referral Doctor" :options="Helper::getKeyValues('Referral', 'doctor', 'id')" placeholder="Please Select" />
-
-        <x-form-select name="procedure_id" wire:click="calculate()" label="Select Procedure (If Any)" :options="Helper::getKeyValues('Procedure', 'name', 'id')"
-            placeholder="Please Select" />
-
-        <x-form-label label="Amount Calculation" />
-
-        <x-form-input name="doctorRegistrationFee" label="Doctor Registration Fee" type="number" disabled />
-
-        <x-form-input name="doctorConsultationFee" label="Doctor Registration Fee" type="number" disabled />
-
-        <x-form-input name="procedureFee" label="Procedure Fee" type="number" disabled />
-
-        <x-form-input name="discount" wire:click="calculate()" label="Discount" type="number" />
-
-        <x-form-input name="round_off" wire:click="calculate()" label="Round Off" type="number" step=".01" />
-
-        <x-form-input name="totalPayment" label="Total Payment" type="number" disabled />
-
-        <x-form-select name="mode_of_payment" label="Select Mode of Payment" :options="Helper::getEnum('billings', 'mode_of_payment')"
-            placeholder="Please Select" />
-    @endwire
-</x-custom-form>
+        <x-step.wizard-button class="mr-4" wire:click="moveAhead">{{ $step != $totalSteps ? 'Next' : 'Submit' }}
+        </x-step.wizard-button>
+    </div>
+</x-steps-form>

@@ -8,7 +8,7 @@ $prefix = 'Controllers\\';
 $index = strpos($string, $prefix) + strlen($prefix);
 $result = substr($string, $index);
 @endphp
-<div class="col-span-12 intro-y lg:col-span-6">
+<div class="col-span-12 intro-y lg:col-span-12">
     <!-- BEGIN: Form Layout -->
     <div class="p-5 intro-y box">
         <div wire:ignore>

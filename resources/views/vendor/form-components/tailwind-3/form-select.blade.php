@@ -9,7 +9,7 @@
             ]) !!}>
 
             @if ($placeholder)
-                <option value="" disabled @if ($nothingSelected()) selected="selected" @endif>
+                <option value="" selected hidden>
                     {{ $placeholder }}
                 </option>
             @endif

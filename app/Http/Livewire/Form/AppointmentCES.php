@@ -8,24 +8,35 @@ use App\Models\Doctor;
 use App\Models\DoctorSchedule;
 use App\Models\Procedure;
 use App\Services\Helper;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class AppointmentCES extends Component
 {
+    // Multi Step Form
+    public $totalSteps = 3;
+    public $step = 1;
+
     // Model Values 1st
     public $doctor_id, $patient_id, $referral_id, $date, $time;
     // Model Values 2nd
     public $procedure_id, $discount, $round_off, $mode_of_payment;
 
     //Custom Values
-    public $data, $doctorRegistrationFee, $doctorConsultationFee, $procedureFee, $totalPayment, $appointment_dates = [];
+    public $data, $doctorRegistrationFee, $doctorConsultationFee, $procedureFee, $totalPayment, $appointment_dates = [], $day;
 
     public function updatedDoctorId($doctor)
     {
-        $this->appointment_dates = DoctorSchedule::where('doctor_id', $doctor)->get();
+        $this->appointment_dates = DoctorSchedule::where('doctor_id', $this->doctor_id)->where('day', $this->day)->get();
         $this->doctorRegistrationFee = Doctor::where('id', $doctor)->pluck('registration_fee');
         $this->doctorConsultationFee = Doctor::where('id', $doctor)->pluck('consultation_fee');
         $this->calculate();
+    }
+
+    public function updatedDate($date)
+    {
+        $this->day = Carbon::parse($date)->format('l');
+        $this->appointment_dates = DoctorSchedule::where('doctor_id', $this->doctor_id)->where('day', $this->day)->get();
     }
 
     public function updatedProcedureId($procedure)
@@ -63,60 +74,134 @@ class AppointmentCES extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function store()
+    public function moveAhead()
     {
-        $validatedData = $this->validate();
-        $procedure = $validatedData['procedure_id'];
-        $discount = $validatedData['discount'];
-        $round_off = $validatedData['round_off'];
-        $mode_of_payment = $validatedData['mode_of_payment'];
-        unset($validatedData['procedure_id']);
-        unset($validatedData['discount']);
-        unset($validatedData['round_off']);
-        unset($validatedData['mode_of_payment']);
-        $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
+        if ($this->step == 1) {
+            //Validate Step 1 Data
+            $this->validateOnly('doctor_id');
+            $this->validateOnly('date');
+            $this->validateOnly('time');
+        }
 
-        $appointment = Appointment::create($validatedData);
-        Billing::create([
-            'appointment_id' => $appointment->id,
-            'procedure_id' => $procedure,
-            'patient_id' => $this->patient_id,
-            'discount' => $discount,
-            'round_off' => $round_off,
-            'mode_of_payment' => $mode_of_payment
-        ]);
+        if ($this->step == 2) {
+            $this->validateOnly('patient_id');
+            $this->validateOnly('referral_id');
+            $this->validateOnly('procedure_id');
+        }
 
-        notify()->success('Appointment Saved Successfully!');
+        if ($this->step == 3) {
+            $this->validateOnly('doctorRegistrationFee');
+            $this->validateOnly('doctorConsultationFee');
+            $this->validateOnly('procedureFee');
+            $this->validateOnly('discount');
+            $this->validateOnly('round_off');
+            $this->validateOnly('totalPayment');
+            $this->validateOnly('mode_of_payment');
 
-        return $this->redirectRoute('appointment.index');
+            //Save
+            $validatedData = $this->validate();
+            $procedure = $validatedData['procedure_id'];
+            $discount = $validatedData['discount'];
+            $round_off = $validatedData['round_off'];
+            $mode_of_payment = $validatedData['mode_of_payment'];
+            unset($validatedData['procedure_id']);
+            unset($validatedData['discount']);
+            unset($validatedData['round_off']);
+            unset($validatedData['mode_of_payment']);
+            $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
+
+            $appointment = Appointment::create($validatedData);
+            Billing::create([
+                'appointment_id' => $appointment->id,
+                'procedure_id' => $procedure,
+                'patient_id' => $this->patient_id,
+                'discount' => $discount,
+                'round_off' => $round_off,
+                'mode_of_payment' => $mode_of_payment
+            ]);
+
+            //redirect
+            notify()->success('Appointment Saved Successfully!');
+
+            return $this->redirectRoute('appointment.index');
+        }
+
+        //Increase Step
+        $this->step += 1;
+        $this->_validateStep();
     }
 
-    public function update()
+    public function moveBack()
     {
-        $validatedData = $this->validate();
-        $procedure = $validatedData['procedure_id'];
-        $discount = $validatedData['discount'];
-        $round_off = $validatedData['round_off'];
-        $mode_of_payment = $validatedData['mode_of_payment'];
-        unset($validatedData['procedure_id']);
-        unset($validatedData['discount']);
-        unset($validatedData['round_off']);
-        unset($validatedData['mode_of_payment']);
-        $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
-
-        Appointment::where('id', $this->data->id)->update($validatedData);
-        Billing::where('appointment_id', $this->data->id)->update([
-            'procedure_id' => $procedure,
-            'patient_id' => $this->patient_id,
-            'discount' => $discount,
-            'round_off' => $round_off,
-            'mode_of_payment' => $mode_of_payment
-        ]);
-
-        notify()->success('Appointment Updated Successfully!');
-
-        return $this->redirectRoute('appointment.index');
+        $this->step -= 1;
+        $this->_validateStep();
     }
+
+    private function _validateStep()
+    {
+        if ($this->step < 1) {
+            $this->step = 1;
+        }
+
+        if ($this->step > $this->totalSteps) {
+            $this->step = $this->totalSteps;
+        }
+    }
+
+    // public function store()
+    // {
+    //     $validatedData = $this->validate();
+    //     $procedure = $validatedData['procedure_id'];
+    //     $discount = $validatedData['discount'];
+    //     $round_off = $validatedData['round_off'];
+    //     $mode_of_payment = $validatedData['mode_of_payment'];
+    //     unset($validatedData['procedure_id']);
+    //     unset($validatedData['discount']);
+    //     unset($validatedData['round_off']);
+    //     unset($validatedData['mode_of_payment']);
+    //     $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
+
+    //     $appointment = Appointment::create($validatedData);
+    //     Billing::create([
+    //         'appointment_id' => $appointment->id,
+    //         'procedure_id' => $procedure,
+    //         'patient_id' => $this->patient_id,
+    //         'discount' => $discount,
+    //         'round_off' => $round_off,
+    //         'mode_of_payment' => $mode_of_payment
+    //     ]);
+
+    //     notify()->success('Appointment Saved Successfully!');
+
+    //     return $this->redirectRoute('appointment.index');
+    // }
+
+    // public function update()
+    // {
+    //     $validatedData = $this->validate();
+    //     $procedure = $validatedData['procedure_id'];
+    //     $discount = $validatedData['discount'];
+    //     $round_off = $validatedData['round_off'];
+    //     $mode_of_payment = $validatedData['mode_of_payment'];
+    //     unset($validatedData['procedure_id']);
+    //     unset($validatedData['discount']);
+    //     unset($validatedData['round_off']);
+    //     unset($validatedData['mode_of_payment']);
+    //     $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
+
+    //     Appointment::where('id', $this->data->id)->update($validatedData);
+    //     Billing::where('appointment_id', $this->data->id)->update([
+    //         'procedure_id' => $procedure,
+    //         'patient_id' => $this->patient_id,
+    //         'discount' => $discount,
+    //         'round_off' => $round_off,
+    //         'mode_of_payment' => $mode_of_payment
+    //     ]);
+
+    //     notify()->success('Appointment Updated Successfully!');
+
+    //     return $this->redirectRoute('appointment.index');
+    // }
 
     public function mount($data)
     {
@@ -125,7 +210,11 @@ class AppointmentCES extends Component
             $this->patient_id = $data->patient_id;
             $this->referral_id = $data->referral_id;
             $this->date = $data->date;
+            $this->day = Carbon::parse($this->date)->format('l');
             $this->time = $data->time;
+        } else {
+            $this->date = date('Y-m-d');
+            $this->day = Carbon::parse($this->date)->format('l');
         }
     }
 
