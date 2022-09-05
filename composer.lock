@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ca0d91b6120a67d598a0f445aff5274",
+    "content-hash": "37ec27deaf140895fe40120cbbde91a1",
     "packages": [
         {
             "name": "asantibanez/livewire-calendar",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/abbasmashaddy72/livewire-calendar.git",
-                "reference": "8891b3611d2cfcfad81d83ee2a3a9a18004fa7a6"
+                "url": "https://github.com/Butochnikov/livewire-calendar.git",
+                "reference": "0ac01114fda781b48945e0e068fc2612d151ca1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/abbasmashaddy72/livewire-calendar/zipball/8891b3611d2cfcfad81d83ee2a3a9a18004fa7a6",
-                "reference": "8891b3611d2cfcfad81d83ee2a3a9a18004fa7a6",
+                "url": "https://api.github.com/repos/Butochnikov/livewire-calendar/zipball/0ac01114fda781b48945e0e068fc2612d151ca1e",
+                "reference": "0ac01114fda781b48945e0e068fc2612d151ca1e",
                 "shasum": ""
             },
             "require": {
@@ -76,9 +76,9 @@
                 "livewire-calendar"
             ],
             "support": {
-                "source": "https://github.com/abbasmashaddy72/livewire-calendar/tree/master"
+                "source": "https://github.com/Butochnikov/livewire-calendar/tree/master"
             },
-            "time": "2022-09-02T08:50:29+00:00"
+            "time": "2022-02-11T00:52:42+00:00"
         },
         {
             "name": "asantibanez/livewire-charts",
@@ -576,16 +576,16 @@
         },
         {
             "name": "diglactic/laravel-breadcrumbs",
-            "version": "v8.0.0",
+            "version": "v8.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/diglactic/laravel-breadcrumbs.git",
-                "reference": "2d213260343690df192fb042bab2ae585731b49a"
+                "reference": "b2c594e56fd15ef3112436e2067dca13131dd990"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/diglactic/laravel-breadcrumbs/zipball/2d213260343690df192fb042bab2ae585731b49a",
-                "reference": "2d213260343690df192fb042bab2ae585731b49a",
+                "url": "https://api.github.com/repos/diglactic/laravel-breadcrumbs/zipball/b2c594e56fd15ef3112436e2067dca13131dd990",
+                "reference": "b2c594e56fd15ef3112436e2067dca13131dd990",
                 "shasum": ""
             },
             "require": {
@@ -641,9 +641,9 @@
             ],
             "support": {
                 "issues": "https://github.com/diglactic/laravel-breadcrumbs/issues",
-                "source": "https://github.com/diglactic/laravel-breadcrumbs/tree/v8.0.0"
+                "source": "https://github.com/diglactic/laravel-breadcrumbs/tree/v8.0.1"
             },
-            "time": "2022-07-27T06:50:36+00:00"
+            "time": "2022-09-02T16:18:17+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -3686,16 +3686,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.14.0",
+            "version": "v4.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1"
+                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/34bea19b6e03d8153165d8f30bba4c3be86184c1",
-                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
+                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
                 "shasum": ""
             },
             "require": {
@@ -3736,9 +3736,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.14.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.15.1"
             },
-            "time": "2022-05-31T20:59:12+00:00"
+            "time": "2022-09-04T07:30:47+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -5432,16 +5432,16 @@
         },
         {
             "name": "spatie/simple-excel",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/simple-excel.git",
-                "reference": "59577197be5ac25e69948a8148a62e3fefc06586"
+                "reference": "c5048f5025606cd3bd10ae824cd73613161e9fc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/simple-excel/zipball/59577197be5ac25e69948a8148a62e3fefc06586",
-                "reference": "59577197be5ac25e69948a8148a62e3fefc06586",
+                "url": "https://api.github.com/repos/spatie/simple-excel/zipball/c5048f5025606cd3bd10ae824cd73613161e9fc9",
+                "reference": "c5048f5025606cd3bd10ae824cd73613161e9fc9",
                 "shasum": ""
             },
             "require": {
@@ -5480,7 +5480,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/simple-excel/issues",
-                "source": "https://github.com/spatie/simple-excel/tree/2.1.0"
+                "source": "https://github.com/spatie/simple-excel/tree/2.2.0"
             },
             "funding": [
                 {
@@ -5488,7 +5488,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-09T19:57:28+00:00"
+            "time": "2022-09-02T13:31:43+00:00"
         },
         {
             "name": "symfony/console",
@@ -7716,79 +7716,6 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.4"
             },
             "time": "2021-12-08T09:12:39+00:00"
-        },
-        {
-            "name": "victorybiz/laravel-simple-select",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/victorybiz/laravel-simple-select.git",
-                "reference": "3bb60e7756263b8a3a571334f58a59847eeac042"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/victorybiz/laravel-simple-select/zipball/3bb60e7756263b8a3a571334f58a59847eeac042",
-                "reference": "3bb60e7756263b8a3a571334f58a59847eeac042",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^8.0|^9.0",
-                "livewire/livewire": "^2.4",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Victorybiz\\SimpleSelect\\SimpleSelectServiceProvider"
-                    ],
-                    "aliases": {
-                        "SimpleSelect": "Victorybiz\\SimpleSelect\\SimpleSelectFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Victorybiz\\SimpleSelect\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Victory Osayi Airuoyuwa",
-                    "email": "lavictorybiz@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel Simple Select inputs component for Blade and Livewire.",
-            "homepage": "https://github.com/victorybiz/laravel-simple-select",
-            "keywords": [
-                "alpinejs",
-                "blade",
-                "custom select",
-                "laravel",
-                "laravel-blade",
-                "laravel-livewire",
-                "laravel-simple-select",
-                "livewire",
-                "multi select",
-                "select",
-                "select-input",
-                "simple-select",
-                "victorybiz"
-            ],
-            "support": {
-                "issues": "https://github.com/victorybiz/laravel-simple-select/issues",
-                "source": "https://github.com/victorybiz/laravel-simple-select/tree/v1.4.0"
-            },
-            "time": "2022-02-09T01:24:34+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

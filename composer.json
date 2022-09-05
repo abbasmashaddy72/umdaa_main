@@ -19,7 +19,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0.1",
+        "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "mckenziearts/laravel-notify": "^2.3",
@@ -30,8 +30,7 @@
         "rahulreghunath/textlocal": "^1.0",
         "silviolleite/laravelpwa": "^2.0",
         "spatie/laravel-cookie-consent": "^3.2",
-        "spatie/simple-excel": "^2.1",
-        "victorybiz/laravel-simple-select": "^1.4"
+        "spatie/simple-excel": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -39,7 +38,7 @@
         "fakerphp/faker": "^1.9.1",
         "imanghafoori/laravel-microscope": "^1.0",
         "laravel/breeze": "^1.10",
-        "laravel/pint": "^1.1.2",
+        "laravel/pint": "^1.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
@@ -88,7 +87,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/abbasmashaddy72/livewire-calendar"
+            "url": "https://github.com/Butochnikov/livewire-calendar"
         }
     ]
 }
