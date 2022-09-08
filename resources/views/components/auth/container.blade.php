@@ -2,13 +2,11 @@
     <div class="block grid-cols-2 gap-4 xl:grid">
         <!-- BEGIN: Login Info -->
         <div class="flex-col hidden min-h-screen xl:flex">
-            <a href="" class="flex items-center pt-5 -intro-x">
-                <img alt="{{ config('app.name', 'Laravel') }} Logo" class="w-6"
-                    src="{{ asset('dist/images/logo.svg') }}">
+            <x-logo class="items-center pt-5 -intro-x">
                 <span class="ml-3 text-lg text-white">
                     {{ config('app.name', 'Laravel') }}
                 </span>
-            </a>
+            </x-logo>
             <div class="my-auto">
                 {{ $left }}
             </div>

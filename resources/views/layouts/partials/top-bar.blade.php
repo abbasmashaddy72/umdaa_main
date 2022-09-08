@@ -1,4 +1,4 @@
-<div class="top-bar">
+<div class="float-right sm:float-none top-bar">
     <!-- BEGIN: Breadcrumb -->
     {{ $breadcrumb }}
     <!-- END: Breadcrumb -->

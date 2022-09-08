@@ -24,6 +24,22 @@ class Helper
         return $enum;
     }
 
+    public static function getKeyValuesWithMap($model, $value, $key, $where_column = null, $where_id = null)
+    {
+        $model = "\\App\\Models\\" . $model;
+        if ($where_column != null && $where_id != null) {
+            $data1 = $model::where($where_column, $where_id)->pluck($value, $key);
+
+            $data = collect($data1)->map(function ($data1, $key) {
+                return ['name' => $data1, 'id' => $key];
+            })->toArray();
+        } else {
+            $data = $model::all()->map->only($value, $key)->toArray();
+        }
+
+        return $data;
+    }
+
     // Gets array of custom key & values from Model
     public static function getKeyValues($model, $value, $key, $where_column = null, $where_id = null)
     {
@@ -31,7 +47,7 @@ class Helper
         if ($where_column != null && $where_id != null) {
             $data = $model::where($where_column, $where_id)->pluck($value, $key);
         } else {
-            $data = $model::all()->pluck($value, $key);
+            $data = $model::all()->pluck($value, $key)->toArray();
         }
 
         return $data;

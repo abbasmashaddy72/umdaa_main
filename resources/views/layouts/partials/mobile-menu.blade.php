@@ -1,8 +1,11 @@
 <div class="mobile-menu md:hidden">
     <div class="mobile-menu-bar">
-        <a href="" class="flex mr-auto">
-            <img alt="Larvel Tailwind HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
-        </a>
+        {{-- <x-logo class="mr-auto" /> --}}
+        <x-logo class="mr-auto">
+            <span class="ml-3 text-lg text-white">
+                {{ config('app.name', 'Laravel') }}
+            </span>
+        </x-logo>
         <a href="javascript:;" id="mobile-menu-toggler">
             <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i>
         </a>

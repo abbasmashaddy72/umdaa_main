@@ -1,15 +1,15 @@
 <div>
     <div class="grid-cols-3 gap-2 sm:grid">
-        @wire('debounce.200ms')
-            <x-form-select name="selectedState" label="Select State" :options="$states" placeholder="Please Select" />
+        <x-simple-select name="selectedState" id="selectedState" label="State" wire:model="selectedState" :options="$states"
+            value-field='id' text-field='name' placeholder="Select State" search-input-placeholder="Search State"
+            :searchable="true" />
 
-            {{-- @if (!is_null($selectedState)) --}}
-            <x-form-select name="selectedCity" label="Select City" :options="$cities" placeholder="Please Select" />
-            {{-- @endif --}}
+        <x-simple-select name="selectedCity" id="selectedCity" label="City" wire:model="selectedCity" :options="$cities"
+            value-field='id' text-field='name' placeholder="Select City" search-input-placeholder="Search City"
+            :searchable="true" />
 
-            {{-- @if (!is_null($selectedCity)) --}}
-            <x-form-select name="selectedLocality" label="Select Locality" :options="$localities" placeholder="Please Select" />
-            {{-- @endif --}}
-        @endwire
+        <x-simple-select name="selectedLocality" id="selectedLocality" label="Locality" wire:model="selectedLocality"
+            :options="$localities" value-field='id' text-field='name' placeholder="Select Locality"
+            search-input-placeholder="Search Locality" :searchable="true" />
     </div>
 </div>

@@ -9,9 +9,9 @@ use Livewire\Component;
 
 class StateCityLocality extends Component
 {
-    public $states;
-    public $cities;
-    public $localities;
+    public $states = [];
+    public $cities = [];
+    public $localities = [];
 
     public $selectedState = null;
     public $selectedCity = null;
@@ -19,19 +19,18 @@ class StateCityLocality extends Component
 
     public function mount($selectedLocality = null)
     {
-        $this->states = Helper::getKeyValues('State', 'name', 'id');
-        $this->cities = collect();
-        $this->localities = collect();
-        $this->selectedLocality = $selectedLocality;
+        $this->states = Helper::getKeyValuesWithMap('State', 'name', 'id');
 
         if (!is_null($selectedLocality)) {
             $locality = Locality::find($selectedLocality);
-            $this->localities = Helper::getKeyValues('Locality', 'name', 'id', 'city_id', $locality->city_id);
+            $this->localities = Helper::getKeyValuesWithMap('Locality', 'name', 'id', 'city_id', $locality->city_id);
             $city = City::find($locality->city_id);
-            $this->cities = Helper::getKeyValues('City', 'name', 'id', 'state_id', $city->state_id);
+            $this->cities = Helper::getKeyValuesWithMap('City', 'name', 'id', 'state_id', $city->state_id);
             $this->selectedCity = $locality->city_id;
             $this->selectedState = $city->state_id;
         }
+
+        // dd($selectedLocality, $this->selectedCity, $this->selectedState);
     }
 
     public function render()
@@ -41,13 +40,13 @@ class StateCityLocality extends Component
 
     public function updatedSelectedState($state)
     {
-        $this->cities = Helper::getKeyValues('City', 'name', 'id', 'state_id', $state);
+        $this->cities = Helper::getKeyValuesWithMap('City', 'name', 'id', 'state_id', $state);
         $this->selectedCity = null;
     }
 
     public function updatedSelectedCity($city)
     {
-        $this->localities = Helper::getKeyValues('Locality', 'name', 'id', 'city_id', $city);
+        $this->localities = Helper::getKeyValuesWithMap('Locality', 'name', 'id', 'city_id', $city);
     }
 
     public function updatedSelectedLocality()

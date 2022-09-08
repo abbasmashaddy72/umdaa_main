@@ -18,8 +18,9 @@
         <div class="grid-cols-2 gap-2 sm:grid">
             <x-form-input name="totalPayment" label="Total Payment" type="number" disabled />
 
-            <x-form-select name="mode_of_payment" label="Select Mode of Payment" :options="Helper::getEnum('billings', 'mode_of_payment')"
-                placeholder="Please Select" />
+            <x-simple-select name="mode_of_payment" id="mode_of_payment" label="Select Mode of Payment"
+                wire:model="mode_of_payment" :options="Helper::getEnum('billings', 'mode_of_payment')" placeholder="Please Select Mode of Payment"
+                search-input-placeholder="Search Mode of Payment" :searchable="true" />
         </div>
     </div>
 </div>

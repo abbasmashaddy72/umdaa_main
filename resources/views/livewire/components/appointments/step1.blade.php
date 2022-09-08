@@ -1,6 +1,7 @@
 <div class="grid-cols-3 gap-2 sm:grid">
-    <x-form-select name="doctor_id" wire:click="calculate()" label="Select Doctor" :options="Helper::getKeyValues('Doctor', 'doctor', 'id')"
-        placeholder="Please Select" />
+    <x-simple-select name="doctor_id" id="doctor_id" label="Select Doctor" wire:model="doctor_id" :options="Helper::getKeyValuesWithMap('Doctor', 'doctor', 'id')"
+        value-field='id' text-field='doctor' placeholder="Select Doctor" search-input-placeholder="Search Doctor"
+        wire:click="calculate()" :searchable="true" />
 
     <x-form-input name="date" label="Select Date {{ $day }}" type="date" />
 </div>

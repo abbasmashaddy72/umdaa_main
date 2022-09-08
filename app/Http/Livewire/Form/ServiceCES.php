@@ -17,6 +17,7 @@ class ServiceCES extends Component
 
     // Custom Values
     public $data;
+    public $isUploaded = false;
 
     protected $rules = [
         'department_id' => '',
@@ -28,6 +29,8 @@ class ServiceCES extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+
+        $this->isUploaded = true;
     }
 
     public function store()

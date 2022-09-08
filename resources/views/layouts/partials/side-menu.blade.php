@@ -1,10 +1,9 @@
 <nav class="side-nav">
-    <a href="" class="flex items-center pt-4 pl-5 intro-x">
-        <img alt="Rubick Tailwind HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
+    <x-logo class="items-center pt-4 pl-5 intro-x">
         <span class="hidden ml-3 text-lg text-white xl:block">
             {{ config('app.name', 'Laravel') }}
         </span>
-    </a>
+    </x-logo>
     <div class="my-6 side-nav__devider"></div>
     <ul>
         @foreach ($side_menu as $menuKey => $menu)

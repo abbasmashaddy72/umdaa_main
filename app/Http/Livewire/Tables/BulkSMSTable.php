@@ -8,7 +8,7 @@ use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 
-class BulkSmsTable extends LivewireDatatable
+class BulkSMSTable extends LivewireDatatable
 {
     public $model = BulkSMS::class;
     public $exportable = true;

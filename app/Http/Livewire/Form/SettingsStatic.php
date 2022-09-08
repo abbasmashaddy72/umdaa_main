@@ -13,6 +13,9 @@ class SettingsStatic extends Component
     // Static Key
     public $name, $contact_no, $image, $gst;
 
+    // Custom Values
+    public $isUploaded = false;
+
     public function mount()
     {
         $this->name = Helper::get_static_option('name');
@@ -31,6 +34,8 @@ class SettingsStatic extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+
+        $this->isUploaded = true;
     }
 
     public function update()
