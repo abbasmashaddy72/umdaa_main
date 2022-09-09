@@ -1,5 +1,5 @@
 .top-nav {
-    @apply z-50 relative;
+    @apply relative z-50;
     @include media-breakpoint-down(md) {
         @apply hidden;
     }
@@ -49,7 +49,7 @@
                 height: 55px;
                 border-top-left-radius: 1rem;
                 border-top-right-radius: 1rem;
-                @apply flex items-center px-5 mr-1 text-white relative;
+                @apply relative flex items-center px-5 mr-1 text-white;
                 @include media-breakpoint-down(xl) {
                     @apply rounded-full;
                 }
@@ -85,7 +85,7 @@
                         @apply text-primary dark:text-white;
                     }
                     .top-menu__title {
-                        @apply text-black font-medium dark:text-white;
+                        @apply font-medium text-black dark:text-white;
                     }
                 }
                 .top-menu__icon {
@@ -97,15 +97,15 @@
                 &:not(.top-menu--active) .top-menu__icon:before {
                     content: "";
                     z-index: -1;
-                    @apply absolute w-full h-full top-0 left-0 rounded-t-lg transition ease-in duration-100;
+                    @apply absolute top-0 left-0 w-full h-full transition duration-100 ease-in rounded-t-lg;
                     @include media-breakpoint-down(xl) {
                         @apply rounded-full;
                     }
                 }
                 .top-menu__title {
-                    @apply ml-3 flex items-center whitespace-nowrap;
+                    @apply flex items-center whitespace-nowrap;
                     .top-menu__sub-icon {
-                        @apply transition ease-in duration-100 w-4 h-4 ml-2;
+                        @apply w-4 h-4 ml-2 transition duration-100 ease-in;
                         @include media-breakpoint-down(xl) {
                             @apply hidden;
                         }
@@ -118,10 +118,10 @@
                 box-shadow: 0px 3px 20px #0000000b;
                 @apply bg-primary hidden w-56 absolute rounded-md z-20 px-0 top-0 -mt-5 before:block before:absolute before:w-full before:h-full before:bg-black/10 before:inset-0 before:rounded-md before:z-[-1];
                 @include media-breakpoint-down(xl) {
-                    @apply left-0 mt-14 ml-0;
+                    @apply left-0 ml-0 mt-14;
                 }
                 li {
-                    @apply px-5 relative;
+                    @apply relative px-5;
                     .top-menu {
                         @apply px-0 mr-0;
                         .top-menu__icon:before {

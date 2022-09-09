@@ -4,7 +4,7 @@
 
         <input {!! $attributes->merge([
             'class' => 'form-control ' . ($label ? 'mt-1' : ''),
-        ]) !!}
+        ]) !!} @if ($type == 'date') onfocus="this.showPicker()" @endif
             @if ($isWired()) wire:model{!! $wireModifier() !!}="{{ $name }}"
             @else
                 value="{{ $value }}" @endif

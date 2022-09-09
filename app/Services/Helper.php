@@ -108,6 +108,9 @@ class Helper
     public static function getTimeSlots($start, $end, $gap)
     {
         // $period = new CarbonPeriod($start, $gap . ' minutes', $end); // for create use 24 hours format later change format
+        if ($gap == 0 || $gap == null) {
+            $gap = 10;
+        }
         $period = Carbon::parse($start)->toPeriod($end, $gap . ' minutes');
         $slots = [];
         foreach ($period as $item) {

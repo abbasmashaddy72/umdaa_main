@@ -23,7 +23,7 @@ class AppointmentCES extends Component
     public $procedure_id, $discount, $round_off, $mode_of_payment;
 
     //Custom Values
-    public $data, $doctorRegistrationFee, $doctorConsultationFee, $procedureFee, $totalPayment, $appointment_dates = [], $day;
+    public $data, $doctorRegistrationFee, $doctorConsultationFee, $procedureFee, $totalPayment, $appointment_dates = [], $day, $radio_patient_id;
 
     public function updatedDoctorId($doctor)
     {
@@ -54,7 +54,7 @@ class AppointmentCES extends Component
             $addTotalPayment =  $this->doctorRegistrationFee[0] + $this->doctorConsultationFee[0] + @$this->procedureFee[0] ?: 0;
         }
         $discountTotalPayment = $addTotalPayment - (($addTotalPayment / 100) * $this->discount ?? 0);
-        $this->totalPayment = $discountTotalPayment - $this->round_off ?? 0;
+        $this->totalPayment = round($discountTotalPayment - $this->round_off ?? 0) ?? 0;
     }
 
     protected $rules = [
@@ -77,7 +77,6 @@ class AppointmentCES extends Component
     public function moveAhead()
     {
         if ($this->step == 1) {
-            //Validate Step 1 Data
             $this->validateOnly('doctor_id');
             $this->validateOnly('date');
             $this->validateOnly('time');
@@ -108,7 +107,7 @@ class AppointmentCES extends Component
             unset($validatedData['discount']);
             unset($validatedData['round_off']);
             unset($validatedData['mode_of_payment']);
-            $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
+            $validatedData['time'] = date("H:i:s", strtotime($validatedData['time']));
 
             $appointment = Appointment::create($validatedData);
             Billing::create([
@@ -159,7 +158,7 @@ class AppointmentCES extends Component
     //     unset($validatedData['discount']);
     //     unset($validatedData['round_off']);
     //     unset($validatedData['mode_of_payment']);
-    //     $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
+    //     $validatedData['time'] = date("H:i:s", strtotime($validatedData['time']));
 
     //     $appointment = Appointment::create($validatedData);
     //     Billing::create([
@@ -187,7 +186,7 @@ class AppointmentCES extends Component
     //     unset($validatedData['discount']);
     //     unset($validatedData['round_off']);
     //     unset($validatedData['mode_of_payment']);
-    //     $validatedData['time'] = date("H:i:s", strtotime(array_values($validatedData['time'])[0]));
+    //     $validatedData['time'] = date("H:i:s", strtotime($validatedData['time']));
 
     //     Appointment::where('id', $this->data->id)->update($validatedData);
     //     Billing::where('appointment_id', $this->data->id)->update([
@@ -213,6 +212,7 @@ class AppointmentCES extends Component
             $this->day = Carbon::parse($this->date)->format('l');
             $this->time = $data->time;
         } else {
+            $this->radio_patient_id = "New Patient";
             $this->date = date('Y-m-d');
             $this->day = Carbon::parse($this->date)->format('l');
         }

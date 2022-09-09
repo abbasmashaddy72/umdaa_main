@@ -3,7 +3,8 @@
         value-field='id' text-field='doctor' placeholder="Select Doctor" search-input-placeholder="Search Doctor"
         wire:click="calculate()" :searchable="true" />
 
-    <x-form-input name="date" label="Select Date {{ $day }}" type="date" />
+    <x-form-input name="date" label="Select Date {{ $day }}" type="date"
+        min="{{ today()->format('Y-m-d') }}" />
 </div>
 
 @if (!empty($this->doctor_id))
@@ -11,11 +12,13 @@
         <x-form-label label="{{ $value->day }}" />
         <div class="grid grid-cols-12 gap-2 mt-5 gap-y-5">
             @foreach (Helper::getTimeSlots($value->from, $value->to, $value->appointment_duration) as $item)
-                <div class="col-span-12 intro-y sm:col-span-1">
+                <div class="col-span-12 sm:col-span-1">
                     <label class="inline-flex items-center">
-                        <input wire:key="5" type="radio" wire:model="time.{{ $item }}"
-                            name="time.{{ $item }}" value="{{ $item }}">
-                        <span class="ml-2">{{ $item }}</span>
+                        <input wire:key="5" type="radio" wire:model="time" name="time"
+                            value="{{ $item }}" class="form-check-input"
+                            @if ($date == today()->format('Y-m-d') && \Carbon\Carbon::parse($item)->format('H:i') <= now()->format('H:i')) disabled @endif>
+                        <span
+                            class="ml-2 form-check-label @if ($date == today()->format('Y-m-d') && \Carbon\Carbon::parse($item)->format('H:i') <= now()->format('H:i')) text-gray-600 @endif">{{ $item }}</span>
                     </label>
                 </div>
             @endforeach

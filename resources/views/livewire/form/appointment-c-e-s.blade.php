@@ -1,10 +1,11 @@
 <x-steps-form>
-    <ul
-        class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
-        @for ($i = 1; $i <= $totalSteps; $i++)
-            <x-step.wizard-step :active="$i == $step">{{ __('Step') }} {{ $i }}</x-step.wizard-step>
-        @endfor
-    </ul>
+    <nav class="rounded-t-lg top-nav bg-primary dark:bg-dark">
+        <ul>
+            @for ($i = 1; $i <= $totalSteps; $i++)
+                <x-step.wizard-step :active="$i == $step">{{ __('Step') }} {{ $i }}</x-step.wizard-step>
+            @endfor
+        </ul>
+    </nav>
 
     @wire('debounce.200ms')
         <div class="mt-2">
