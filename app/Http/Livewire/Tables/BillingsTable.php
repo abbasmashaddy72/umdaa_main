@@ -50,6 +50,10 @@ class BillingsTable extends LivewireDatatable
 
             BooleanColumn::name('procedure_id')
                 ->label('Procedure Billing'),
+
+            Column::callback(['id'], function ($id) {
+                return view('pages.billing.actions', ['id' => $id]);
+            })->excludeFromExport()->unsortable()->label('Action'),
         ];
     }
 }

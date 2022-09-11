@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBillingRequest;
 use App\Http\Requests\UpdateBillingRequest;
 use App\Models\Billing;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BillingController extends Controller
 {
@@ -54,9 +55,9 @@ class BillingController extends Controller
      */
     public function show(Billing $billing)
     {
-        $data = $billing;
+        $pdf = Pdf::loadView('pages.billing.show');
 
-        return view('pages.billing.ces', compact('data'));
+        return $pdf->stream('invoice.pdf');
     }
 
     /**
