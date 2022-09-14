@@ -40,7 +40,37 @@
     @if ($this->radio_patient_id == 'New Patient')
         <div class="col-span-12 intro-y sm:col-span-1">
             <div class="mt-2 shadow-md">
-                @livewire('form.patient-c-e-s', key(Str::random(10)))
+                <div class="col-span-12 intro-y lg:col-span-12">
+                    <div class="p-5 rounded-lg intro-y box">
+                        <div class="grid-cols-4 gap-2 sm:grid">
+                            @wire('debounce.200ms')
+                                <x-form-input name="name" label="Name" type="text" />
+
+                                <x-simple-select name="gender" id="gender" label="Gender" wire:model="gender"
+                                    :options="Helper::getEnum('patients', 'gender')" placeholder="Please Select" search-input-placeholder="Search Gender"
+                                    :searchable="true" />
+
+                                <x-form-input name="dob" label="Date of Birth" type="date" />
+
+                                <x-input-with-search name="age" label="Age" type="number" :options="$options" />
+                            @endwire
+                        </div>
+
+                        @livewire('components.state-city-locality', ['selectedLocality' => $selectedLocalityId])
+
+                        <div class="grid-cols-3 gap-2 sm:grid">
+                            @wire('debounce.200ms')
+                                <x-form-input name="contact_no" label="Contact No." type="number" />
+
+                                <x-simple-select name="blood_group" id="blood_group" label="Blood Group"
+                                    wire:model="blood_group" :options="Helper::getEnum('patients', 'blood_group')" placeholder="Please Select"
+                                    search-input-placeholder="Search Blood Group" :searchable="true" />
+
+                                <x-form-textarea name="description" label="About Patient" />
+                            @endwire
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     @endif

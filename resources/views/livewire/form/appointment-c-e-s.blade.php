@@ -22,7 +22,8 @@
             &nbsp;
         @endif
 
-        <x-step.wizard-button class="mr-4" wire:click="moveAhead">{{ $step != $totalSteps ? 'Next' : 'Submit' }}
+        <x-step.wizard-button class="mr-4" type="submit" wire:click="moveAhead">
+            {{ $step != $totalSteps ? 'Next' : 'Submit' }}
         </x-step.wizard-button>
     </div>
 </x-steps-form>

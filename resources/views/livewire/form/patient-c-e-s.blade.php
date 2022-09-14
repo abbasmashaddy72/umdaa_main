@@ -1,5 +1,5 @@
 <x-custom-form>
-    <div class="grid-cols-3 gap-2 sm:grid">
+    <div class="grid-cols-4 gap-2 sm:grid">
         @wire('debounce.200ms')
             <x-form-input name="name" label="Name" type="text" />
 
@@ -7,6 +7,8 @@
                 placeholder="Please Select" search-input-placeholder="Search Gender" :searchable="true" />
 
             <x-form-input name="dob" label="Date of Birth" type="date" />
+
+            <x-input-with-search name="age" label="Age" type="number" :options="$options" />
         @endwire
     </div>
 
