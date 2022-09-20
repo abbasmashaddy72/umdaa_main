@@ -14,7 +14,10 @@ class PatientsTable extends LivewireDatatable
 
     public function builder()
     {
-        return Patient::query()->with('locality');
+        if (auth()->user()->roles->first()->title == 'Admin') {
+            return Patient::query()->with('locality');
+        }
+        return Patient::query()->with('locality')->where('branch_id', auth()->user()->branch_id);
     }
 
     public function columns()

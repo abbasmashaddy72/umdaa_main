@@ -26,6 +26,10 @@
                 <form id="login-form" method="POST" action="{{ route('login') }}">
                     @csrf
 
+                    <x-form-select name="branch_id" label="{{ __('Branch') }}" placeholder="{{ __('Select Branch') }}"
+                        :options="$branches" />
+
+
                     <x-form-input name="email" label="{{ __('Email') }}" type="email" required autofocus
                         :show-errors="false" />
 

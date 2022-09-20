@@ -15,7 +15,7 @@ class BillingsTable extends LivewireDatatable
 
     public function builder()
     {
-        return Billing::query()->with('appointment', 'patient', 'procedure');
+        return Billing::query()->with('patient');
     }
 
     public function columns()

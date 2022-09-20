@@ -10,12 +10,18 @@ class Appointment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'branch_id',
         'doctor_id',
         'patient_id',
         'referral_id',
         'date',
         'time'
     ];
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
 
     public function doctor()
     {

@@ -16,7 +16,8 @@ class Patient extends Model
         'blood_group',
         'dob',
         'contact_no',
-        'description'
+        'description',
+        'branch_id'
     ];
 
     public function getPatientAttribute()
@@ -27,6 +28,11 @@ class Patient extends Model
     public function locality()
     {
         return $this->belongsTo(Locality::class);
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
     }
 
     public function relation()

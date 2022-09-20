@@ -26,6 +26,7 @@ class PatientFactory extends Factory
             'dob' => fake()->date(),
             'contact_no' => fake()->unique()->numberBetween(7777777777, 999999999),
             'description' => fake()->text(500),
+            'branch_id' => Arr::random([1, 2])
         ];
     }
 }

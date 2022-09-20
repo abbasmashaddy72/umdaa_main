@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Referral;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Appointment>
@@ -20,6 +21,7 @@ class AppointmentFactory extends Factory
     public function definition()
     {
         return [
+            'branch_id' => Arr::random([1, 2]),
             'doctor_id' => Doctor::pluck('id')[fake()->numberBetween(1, Doctor::count() - 1)],
             'patient_id' => Patient::pluck('id')[fake()->numberBetween(1, Patient::count() - 1)],
             'referral_id' => Referral::pluck('id')[fake()->numberBetween(1, Referral::count() - 1)],
