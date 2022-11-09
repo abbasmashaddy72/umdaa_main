@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Appointment;
+use App\Models\Branch;
 use App\Models\Patient;
 use App\Models\Procedure;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,6 +28,8 @@ class BillingFactory extends Factory
             'discount' => fake()->numberBetween(0, 60),
             'round_off' => fake()->numberBetween(0, 100),
             'mode_of_payment' => Arr::random(['Credit Card', 'Debit Card', 'Cash', 'Cheque', 'Digital Payments (UPI; Mobile Wallets)']),
+            'transaction_details' => fake()->uuid(),
+            'branch_id' => Branch::pluck('id')[fake()->numberBetween(1, Branch::count() - 1)],
         ];
     }
 }

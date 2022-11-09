@@ -9,6 +9,7 @@
             @else
                 value="{{ $value }}" @endif
             name="{{ $name }}" type="{{ $type }}" />
+        {{ $slot }}
     </label>
 
     @if ($hasErrorAndShow($name))

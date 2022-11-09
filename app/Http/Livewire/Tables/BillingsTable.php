@@ -45,6 +45,11 @@ class BillingsTable extends LivewireDatatable
                 ->label('Mode of Payment')
                 ->filterable(),
 
+            Column::name('transaction_details')
+                ->searchable()
+                ->label('Transaction Details')
+                ->filterable(),
+
             BooleanColumn::name('appointment_id')
                 ->label('Appointment Billing'),
 

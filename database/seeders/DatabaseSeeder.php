@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        // Model::unguard();
         $this->call(StateSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(LocalitySeeder::class);
@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PatientRelationSeeder::class);
         $this->call(BillingSeeder::class);
         $this->call(BulkSMSSeeder::class);
-        Model::reguard();
+        $this->call(VitalSeeder::class);
+        // Model::reguard();
     }
 }

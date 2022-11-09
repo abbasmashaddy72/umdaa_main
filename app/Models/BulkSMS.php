@@ -16,6 +16,18 @@ class BulkSMS extends Model
         'invalid',
         'duplicate',
         'dnd',
-        'valid'
+        'valid',
+        'branch_id',
+        'user_id'
     ];
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

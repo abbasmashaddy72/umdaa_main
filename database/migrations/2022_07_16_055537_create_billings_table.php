@@ -18,9 +18,11 @@ return new class extends Migration
             $table->foreignId('appointment_id')->nullable()->constrained('appointments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('procedure_id')->nullable()->constrained('procedures')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('patient_id')->nullable()->constrained('patients')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('branch_id')->nullable()->constrained('branches')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedDecimal('discount', 8, 2);
             $table->unsignedDecimal('round_off', 8, 2);
             $table->enum('mode_of_payment', ['Credit Card', 'Debit Card', 'Cash', 'Cheque', 'Digital Payments (UPI; Mobile Wallets)']);
+            $table->string('transaction_details')->nullable();
             $table->timestamps();
         });
     }

@@ -15,7 +15,9 @@ class Billing extends Model
         'patient_id',
         'discount',
         'round_off',
-        'mode_of_payment'
+        'mode_of_payment',
+        'branch_id',
+        'transaction_details'
     ];
 
     public function appointment()
@@ -31,5 +33,10 @@ class Billing extends Model
     public function procedure()
     {
         return $this->belongsTo(Procedure::class);
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
     }
 }

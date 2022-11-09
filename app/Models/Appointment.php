@@ -42,4 +42,9 @@ class Appointment extends Model
     {
         return $this->belongsTo(Referral::class);
     }
+
+    public function vitals()
+    {
+        return $this->belongsToMany(Vital::class);
+    }
 }
