@@ -18,7 +18,7 @@
     multiple: {{ isset($attributes['multiple']) ? 'true' : 'false' }},
     maxSelection: '{{ $maxSelection }}',
     required: {{ isset($attributes['required']) ? 'true' : 'false' }},
-    disabled: {{ isset($attributes['disabled']) ? 'true' : 'false' }},
+    disabled: {{ isset($attributes['disabled']) || Helper::getRouteAction() == 'show' ? 'true' : 'false' }},
     searchable: {{ $searchable ? 'true' : 'false' }},
     clearable: {{ $clearable ? 'true' : 'false' }},
     onSelect: '{{ $attributes['on-select'] ?? 'select' }}'

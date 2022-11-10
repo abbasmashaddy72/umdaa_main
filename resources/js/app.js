@@ -1,10 +1,12 @@
-import Alpine from 'alpinejs'
-import { createPopper } from '@popperjs/core'
+import Alpine from "alpinejs";
+import focus from "@alpinejs/focus";
+import { createPopper } from "@popperjs/core";
 
-window.Alpine = Alpine
-Alpine.start()
+Alpine.plugin(focus);
+window.Alpine = Alpine;
+Alpine.start();
 
-window.createPopper = createPopper
+window.createPopper = createPopper;
 
 /*
  |--------------------------------------------------------------------------
@@ -14,13 +16,13 @@ window.createPopper = createPopper
  | Import Midone built-in components.
  |
  */
-import './bootstrap'
-import '@left4code/tw-starter/dist/js/svg-loader'
-import '@left4code/tw-starter/dist/js/accordion'
-import '@left4code/tw-starter/dist/js/alert'
-import '@left4code/tw-starter/dist/js/dropdown'
-import '@left4code/tw-starter/dist/js/modal'
-import '@left4code/tw-starter/dist/js/tab'
+import "./bootstrap";
+import "@left4code/tw-starter/dist/js/svg-loader";
+import "@left4code/tw-starter/dist/js/accordion";
+import "@left4code/tw-starter/dist/js/alert";
+import "@left4code/tw-starter/dist/js/dropdown";
+import "@left4code/tw-starter/dist/js/modal";
+import "@left4code/tw-starter/dist/js/tab";
 
 /*
  |--------------------------------------------------------------------------
@@ -30,11 +32,11 @@ import '@left4code/tw-starter/dist/js/tab'
  | Import 3rd party library JS files.
  |
  */
-import './components/feather'
-import './components/tippy'
-import './components/datepicker'
-import './components/tom-select'
-import './components/dropzone'
+import "./components/feather";
+import "./components/tippy";
+import "./components/datepicker";
+import "./components/tom-select";
+import "./components/dropzone";
 
 /*
  |--------------------------------------------------------------------------
@@ -44,10 +46,12 @@ import './components/dropzone'
  | Import JS custom components.
  |
  */
-import './components/show-modal'
-import './components/show-slide-over'
-import './components/show-dropdown'
-import './components/side-menu'
-import './components/mobile-menu'
-import './components/side-menu-tooltip'
-import './components/new-dark-mode-switcher'
+import "./components/show-modal";
+import "./components/show-slide-over";
+import "./components/show-dropdown";
+import "./components/side-menu";
+import "./components/mobile-menu";
+import "./components/side-menu-tooltip";
+import "./components/new-dark-mode-switcher";
+
+require("../../vendor/wire-elements/modal/resources/js/modal");

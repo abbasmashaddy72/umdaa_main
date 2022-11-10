@@ -1,4 +1,4 @@
-<div class="@if ($type === 'hidden') hidden @else mt-4 @endif">
+<div class="@if ($type === 'hidden') hidden @else @endif">
     <label>
         <x-form-label :label="$label" />
 

@@ -31,7 +31,8 @@
         "silviolleite/laravelpwa": "^2.0",
         "spatie/laravel-cookie-consent": "^3.2",
         "spatie/simple-excel": "^2.1",
-        "victorybiz/laravel-simple-select": "^1.4"
+        "victorybiz/laravel-simple-select": "^1.4",
+        "wire-elements/modal": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

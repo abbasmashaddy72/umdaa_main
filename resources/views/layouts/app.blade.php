@@ -44,6 +44,7 @@
 
         </div>
         <x:notify-messages />
+        @livewire('livewire-ui-modal')
         @livewireScripts
         @notifyJs
         @stack('scripts')
