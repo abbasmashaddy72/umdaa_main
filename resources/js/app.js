@@ -2,9 +2,9 @@ import Alpine from "alpinejs";
 import focus from "@alpinejs/focus";
 import { createPopper } from "@popperjs/core";
 
-Alpine.plugin(focus);
 window.Alpine = Alpine;
 Alpine.start();
+Alpine.plugin(focus);
 
 window.createPopper = createPopper;
 
@@ -54,4 +54,4 @@ import "./components/mobile-menu";
 import "./components/side-menu-tooltip";
 import "./components/new-dark-mode-switcher";
 
-require("../../vendor/wire-elements/modal/resources/js/modal");
+import "../../vendor/wire-elements/modal/resources/js/modal";

@@ -1,7 +1,7 @@
 @props([
     'label' => '',
 ])
-<div x-cloak class="relative mt-4" x-data="SimpleSelect({
+<div x-cloak class="relative" x-data="SimpleSelect({
     dataSource: {{ is_array($options) ? json_encode($options) : json_encode([]) }},
     @if ($attributes->whereStartsWith('wire:model')->first()) selected: @entangle($attributes->wire('model')),
         @else
