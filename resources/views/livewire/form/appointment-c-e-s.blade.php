@@ -97,7 +97,11 @@
                                                 wire:model="gender" :options="Helper::getEnum('patients', 'gender')" placeholder="Please Select"
                                                 search-input-placeholder="Search Gender" :searchable="true" />
 
-                                            <x-form-input name="dob" label="Date of Birth" type="date" />
+                                            <x-form-input name="dob" label="Date of Birth" type="date">
+                                                <small class="text-green-600 form-text">
+                                                    {{ \Carbon\Carbon::parse($dob)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days') }}
+                                                </small>
+                                            </x-form-input>
 
                                             <x-input-with-search name="age" label="Age" type="number"
                                                 :options="$options" />

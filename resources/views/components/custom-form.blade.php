@@ -8,9 +8,9 @@
     $index = strpos($string, $prefix) + strlen($prefix);
     $result = substr($string, $index);
 @endphp
-<div class="col-span-12 intro-y lg:col-span-12">
+<div class="col-span-12 lg:col-span-12">
     <!-- BEGIN: Form Layout -->
-    <div class="p-5 rounded-lg intro-y box">
+    <div class="p-5 rounded-lg box">
         <div wire:ignore>
             @if ($form == true)
                 @if (Helper::getRouteAction() == 'create')

@@ -1,9 +1,9 @@
 <div class="grid grid-cols-12 gap-5 mt-5">
-    <div class="col-span-6 intro-y">
+    <div class="col-span-6">
         <!-- BEGIN: Form Layout -->
-        <div class="p-5 intro-y box">
+        <div class="p-5 box">
 
-            <div class="pr-1 intro-y">
+            <div class="pr-1">
                 <div class="p-2 box">
                     <ul class="nav nav-pills" role="tablist">
                         <li id="doctors-tab" class="flex-1 nav-item" role="presentation">
@@ -43,9 +43,9 @@
         </div>
     </div>
 
-    <div class="col-span-6 intro-y">
+    <div class="col-span-6">
         <!-- BEGIN: Form Layout -->
-        <div class="p-5 intro-y box">
+        <div class="p-5 box">
             <form wire:submit.prevent="store">
                 @csrf
 

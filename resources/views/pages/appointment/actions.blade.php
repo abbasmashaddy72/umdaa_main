@@ -8,13 +8,34 @@
         </svg>
     </a>
 
-    <a href="{{ route('appointment.edit', [$id]) }}" class="p-1 rounded text-primary hover:bg-primary hover:text-white">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <button wire:click='$emit("openModal", "modals.vital-modal", @json(['appointment_id' => $id]))'
+        class="p-1 rounded text-info hover:bg-info hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+        </svg>
+    </button>
+
+    <button wire:click='$emit("openModal", "modals.payment-modal", @json(['appointment_id' => $id]))'
+        class="p-1 text-red-600 rounded hover:bg-red-600 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+    </button>
+
+    <button wire:click='$emit("openModal", "modals.re-schedule-modal", @json(['appointment_id' => $id]))'
+        class="p-1 rounded text-primary hover:bg-primary hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-watch">
+            <circle cx="12" cy="12" r="7"></circle>
+            <polyline points="12 9 12 12 13.5 13.5"></polyline>
             <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+                d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83">
             </path>
         </svg>
-    </a>
+    </button>
 
     @include('datatables::delete', ['value' => $id])
 </div>
