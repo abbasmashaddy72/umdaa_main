@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('referral_id')->nullable()->constrained('referrals')->onUpdate('cascade')->onDelete('cascade');
             $table->date('date');
             $table->time('time');
+            $table->enum('status', ['No Show', 'Arrived', 'Re Scheduled', 'Finished'])->default('Arrived');
             $table->timestamps();
         });
     }

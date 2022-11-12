@@ -27,6 +27,7 @@ class AppointmentFactory extends Factory
             'referral_id' => Referral::pluck('id')[fake()->numberBetween(1, Referral::count() - 1)],
             'date' => fake()->date(),
             'time' => fake()->time(),
+            'status' => fake()->randomElement(['No Show', 'Arrived', 'Re Scheduled', 'Finished']),
         ];
     }
 }

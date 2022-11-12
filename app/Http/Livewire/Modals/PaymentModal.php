@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Modals;
 use App\Models\Appointment;
 use App\Models\Billing;
 use App\Models\Patient;
+use App\Models\Procedure;
 use LivewireUI\Modal\ModalComponent;
 
 class PaymentModal extends ModalComponent
@@ -12,27 +13,29 @@ class PaymentModal extends ModalComponent
     // Set Data
     public $appointment_id;
     // Model Keys
-    public $procedure_id, $patient_id, $discount, $round_off, $mode_of_payment, $branch_id, $transaction_details;
+    public $procedure_id, $patient_id, $discount = 0, $round_off = 0, $mode_of_payment, $branch_id, $transaction_details, $registration_fee = 0, $consultation_fee = 0, $procedure_price = 0;
     // Custom Keys
     public $name;
+
+    public function updatedProcedureId($procedure)
+    {
+        $this->procedure_price = Procedure::where('id', $procedure)->value('price');
+    }
 
     public function mount()
     {
         if (!empty($this->appointment_id)) {
             $data = Billing::where('appointment_id', $this->appointment_id)->latest()->first();
-            $this->vital_id = $data->id;
-            $this->pulse_rate = $data->pulse_rate;
-            $this->bp = $data->bp;
-            $this->resp_rate = $data->resp_rate;
-            $this->temp = $data->temp;
-            $this->spo2 = $data->spo2;
-            $this->height = $data->height;
-            $this->weight = $data->weight;
-            $this->bmi = $data->bmi;
-            $this->bsa = $data->bsa;
-            $this->waist = $data->waist;
-            $this->hip = $data->hip;
-            $this->wh_ratio = $data->wh_ratio;
+            $this->procedure_id = $data->procedure_id ?? '';
+            $this->patient_id = $data->patient_id ?? '';
+            $this->discount = $data->discount ?? 0;
+            $this->round_off = $data->round_off ?? 0;
+            $this->mode_of_payment = $data->mode_of_payment ?? '';
+            $this->branch_id = $data->branch_id ?? '';
+            $this->transaction_details = $data->transaction_details ?? '';
+            $this->registration_fee = $data->registration_fee ?? 0;
+            $this->consultation_fee = $data->consultation_fee ?? 0;
+            $this->procedure_price = $data->procedure_price ?? 0;
         }
         $appointment_data = Appointment::find($this->appointment_id);
         $patient_data = Patient::where('id', $appointment_data->patient_id)->first();
@@ -40,18 +43,17 @@ class PaymentModal extends ModalComponent
     }
 
     protected $rules = [
-        'pulse_rate' => '',
-        'bp' => '',
-        'resp_rate' => '',
-        'temp' => '',
-        'spo2' => '',
-        'height' => '',
-        'weight' => '',
-        'bmi' => '',
-        'bsa' => '',
-        'waist' => '',
-        'hip' => '',
-        'wh_ratio' => '',
+        'appointment_id' => '',
+        'procedure_id' => '',
+        'patient_id' => '',
+        'discount' => '',
+        'round_off' => '',
+        'mode_of_payment' => '',
+        'branch_id' => '',
+        'transaction_details' => '',
+        'registration_fee' => '',
+        'consultation_fee' => '',
+        'procedure_price' => '',
     ];
 
     public function updated($propertyName)
@@ -62,14 +64,12 @@ class PaymentModal extends ModalComponent
     public function add()
     {
         $validatedData = $this->validate();
+        $validatedData['appointment_id'] = $this->appointment_id;
+        $validatedData['status'] = 1;
 
-        if (!empty($this->vital_id)) {
-            Billing::findOrFail($this->vital_id)->update($validatedData);
-        } else {
-            Billing::create($validatedData);
-        }
+        Billing::where('appointment_id', $this->appointment_id)->updateOrCreate($validatedData);
 
-        notify()->success('Vitals Updated Successfully!');
+        notify()->success('Payment Updated Successfully!');
 
         $this->emit('refreshLivewireDatatable');
 
@@ -77,6 +77,19 @@ class PaymentModal extends ModalComponent
     }
     public function render()
     {
+        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price ?: 0;
+
+        if (empty($this->discount)) {
+            $discountTotalPayment = $addTotalPayment;
+        } else {
+            $discountTotalPayment = $addTotalPayment - (($addTotalPayment / 100) * $this->discount ?? 0);
+        }
+        if (empty($this->round_off)) {
+            $this->totalPayment = round((int)$discountTotalPayment);
+        } else {
+            $this->totalPayment = round($discountTotalPayment - $this->round_off ?? 0) ?? 0;
+        }
+
         return view('livewire.modals.payment-modal');
     }
 }

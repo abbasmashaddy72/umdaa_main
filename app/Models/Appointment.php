@@ -15,7 +15,8 @@ class Appointment extends Model
         'patient_id',
         'referral_id',
         'date',
-        'time'
+        'time',
+        'status'
     ];
 
     public function branch()

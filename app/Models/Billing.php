@@ -17,7 +17,11 @@ class Billing extends Model
         'round_off',
         'mode_of_payment',
         'branch_id',
-        'transaction_details'
+        'transaction_details',
+        'registration_fee',
+        'consultation_fee',
+        'procedure_price',
+        'status'
     ];
 
     public function appointment()

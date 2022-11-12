@@ -16,9 +16,9 @@ use Livewire\Component;
 class AppointmentCES extends Component
 {
     // Model Values Appointment
-    public $doctor_id, $patient_id, $referral_id, $date, $time;
+    public $doctor_id, $patient_id, $referral_id, $date, $time, $appointment_status;
     // Model Values Billing
-    public $procedure_id, $discount = 0, $round_off = 0, $mode_of_payment, $transaction_details;
+    public $procedure_id, $discount = 0, $round_off = 0, $mode_of_payment, $transaction_details, $registration_fee = 0, $consultation_fee = 0, $procedure_price = 0, $billing_status;
     // Model Values Patient
     public $name, $locality_id, $gender, $blood_group, $dob, $contact_no, $description;
     // Model Values Vital
@@ -27,7 +27,7 @@ class AppointmentCES extends Component
     // Custom Values 3rd
     public $selectedLocalityId = null, $age, $age_select, $options;
     //Custom Values
-    public $data, $action, $doctorName, $doctorRegistrationFee = 0, $doctorConsultationFee = 0, $procedureFee = 0, $totalPayment = 0, $appointment_dates = [], $day, $radio_patient_id, $working_days;
+    public $data, $action, $doctorName, $totalPayment = 0, $appointment_dates = [], $day, $radio_patient_id, $working_days;
 
     // Listeners
     protected $listeners = ['locality_changed' => 'locality_changed'];
@@ -82,8 +82,8 @@ class AppointmentCES extends Component
         $this->appointment_dates = DoctorSchedule::where('doctor_id', $this->doctor_id)->where('day', $this->day)->get();
         $this->working_days = DoctorSchedule::where('doctor_id', $this->doctor_id)->pluck('day')->toArray();
         $doctor_data = Doctor::where('id', $doctor)->first();
-        $this->doctorRegistrationFee = $doctor_data->registration_fee;
-        $this->doctorConsultationFee = $doctor_data->consultation_fee;
+        $this->registration_fee = $doctor_data->registration_fee;
+        $this->consultation_fee = $doctor_data->consultation_fee;
         $this->doctorName = $doctor_data->name;
     }
 
@@ -95,7 +95,7 @@ class AppointmentCES extends Component
 
     public function updatedProcedureId($procedure)
     {
-        $this->procedureFee = Procedure::where('id', $procedure)->pluck('price');
+        $this->procedure_price = Procedure::where('id', $procedure)->pluck('price');
     }
 
     protected $rules = [
@@ -105,12 +105,17 @@ class AppointmentCES extends Component
         'referral_id' => '',
         'date' => '',
         'time' => '',
+        'appointment_status' => '',
         // Billing
         'procedure_id' => '',
         'discount' => '',
         'round_off' => '',
         'mode_of_payment' => '',
         'transaction_details' => '',
+        'registration_fee' => '',
+        'consultation_fee' => '',
+        'procedure_price' => '',
+        'billing_status' => '',
         // Patients
         'name' => '',
         'locality_id' => '',
@@ -147,11 +152,19 @@ class AppointmentCES extends Component
         $round_off = $validatedData['round_off'];
         $mode_of_payment = $validatedData['mode_of_payment'];
         $transaction_details = $validatedData['transaction_details'];
+        $registration_fee = $validatedData['registration_fee'];
+        $consultation_fee = $validatedData['consultation_fee'];
+        $procedure_price = $validatedData['procedure_price'];
+        $billing_status = $validatedData['billing_status'];
+        unset($validatedData['registration_fee']);
+        unset($validatedData['consultation_fee']);
+        unset($validatedData['procedure_price']);
         unset($validatedData['procedure_id']);
         unset($validatedData['discount']);
         unset($validatedData['round_off']);
         unset($validatedData['mode_of_payment']);
         unset($validatedData['transaction_details']);
+        unset($validatedData['billing_status']);
         $validatedData['time'] = date("H:i:s", strtotime($validatedData['time']));
         $name = $validatedData['name'];
         $validatedData['locality_id'] = $this->selectedLocalityId['locality_id'];
@@ -182,6 +195,9 @@ class AppointmentCES extends Component
         ]);
 
         $validatedData['patient_id'] = $patient->id;
+        $validatedData['status'] = $validatedData['appointment_status'];
+        unset($validatedData['appointment_status']);
+        $validatedData['status'] = "Arrived";
 
         $appointment = Appointment::create($validatedData);
 
@@ -208,100 +224,11 @@ class AppointmentCES extends Component
             'discount' => $discount,
             'round_off' => $round_off,
             'mode_of_payment' => $mode_of_payment,
-            'transaction_details' => $transaction_details
-        ]);
-
-        notify()->success('Appointment Saved Successfully!');
-
-        return $this->redirectRoute('appointment.index');
-    }
-
-    public function update()
-    {
-        $validatedData = $this->validate();
-        $procedure = $validatedData['procedure_id'];
-        $discount = $validatedData['discount'];
-        $round_off = $validatedData['round_off'];
-        $mode_of_payment = $validatedData['mode_of_payment'];
-        $transaction_details = $validatedData['transaction_details'];
-        unset($validatedData['procedure_id']);
-        unset($validatedData['discount']);
-        unset($validatedData['round_off']);
-        unset($validatedData['mode_of_payment']);
-        unset($validatedData['transaction_details']);
-        $validatedData['time'] = date("H:i:s", strtotime($validatedData['time']));
-        $validatedData['branch_id'] = auth()->user()->branch_id;
-        unset($validatedData['name']);
-        unset($validatedData['locality_id']);
-        unset($validatedData['gender']);
-        unset($validatedData['blood_group']);
-        unset($validatedData['dob']);
-        unset($validatedData['contact_no']);
-        unset($validatedData['description']);
-        $pulse_rate = $validatedData['pulse_rate'];
-        $bp = $validatedData['bp'];
-        $resp_rate = $validatedData['resp_rate'];
-        $temp = $validatedData['temp'];
-        $spo2 = $validatedData['spo2'];
-        $height = $validatedData['height'];
-        $weight = $validatedData['weight'];
-        $bmi = $validatedData['bmi'];
-        $bsa = $validatedData['bsa'];
-        $waist = $validatedData['waist'];
-        $hip = $validatedData['hip'];
-        $wh_ratio = $validatedData['wh_ratio'];
-        unset($validatedData['pulse_rate']);
-        unset($validatedData['bp']);
-        unset($validatedData['resp_rate']);
-        unset($validatedData['temp']);
-        unset($validatedData['spo2']);
-        unset($validatedData['height']);
-        unset($validatedData['weight']);
-        unset($validatedData['bmi']);
-        unset($validatedData['bsa']);
-        unset($validatedData['waist']);
-        unset($validatedData['hip']);
-        unset($validatedData['wh_ratio']);
-
-        Patient::where('id', $this->patient_id)->update([
-            'name' => $this->name,
-            'locality_id' => $this->locality_id,
-            'gender' => $this->gender,
-            'blood_group' => $this->blood_group,
-            'dob' => $this->dob,
-            'contact_no' => $this->contact_no,
-            'description' => $this->description,
-            'branch_id' => $validatedData['branch_id']
-        ]);
-
-        $validatedData['patient_id'] = $this->patient_id;
-
-        Appointment::where('id', $this->appointment_id)->update($validatedData);
-
-        Vital::where('appointment_id', $this->appointment_id)->update([
-            'appointment_id' => $this->appointment_id,
-            'pulse_rate' => $pulse_rate,
-            'bp' => $bp,
-            'resp_rate' => $resp_rate,
-            'temp' => $temp,
-            'spo2' => $spo2,
-            'height' => $height,
-            'weight' => $weight,
-            'bmi' => $bmi,
-            'bsa' => $bsa,
-            'waist' => $waist,
-            'hip' => $hip,
-            'wh_ratio' => $wh_ratio,
-        ]);
-
-        Billing::where('appointment_id', $this->appointment_id)->update([
-            'appointment_id' => $this->appointment_id,
-            'procedure_id' => $procedure,
-            'patient_id' => $this->patient_id,
-            'discount' => $discount,
-            'round_off' => $round_off,
-            'mode_of_payment' => $mode_of_payment,
-            'transaction_details' => $transaction_details
+            'transaction_details' => $transaction_details,
+            'registration_fee' => $registration_fee,
+            'consultation_fee' => $consultation_fee,
+            'procedure_price' => $procedure_price,
+            'billing_status' => $billing_status,
         ]);
 
         notify()->success('Appointment Saved Successfully!');
@@ -319,11 +246,12 @@ class AppointmentCES extends Component
             $this->appointment_id = $data->id;
             $this->radio_patient_id = "Old Patient";
             $this->date = $data->date;
+            $this->appointment_status = $data->status;
             $this->day = Carbon::parse($this->date)->format('l');
             $this->time = Carbon::parse($data->time)->format('H:i A');
             $doctor_data = Doctor::where('id', $data->doctor_id)->first();
-            $this->doctorRegistrationFee = $doctor_data->registration_fee;
-            $this->doctorConsultationFee = $doctor_data->consultation_fee;
+            $this->registration_fee = $doctor_data->registration_fee;
+            $this->consultation_fee = $doctor_data->consultation_fee;
             $this->doctorName = $doctor_data->name;
             $vital_data = Vital::where('appointment_id', $data->id)->latest()->first();
             if (!empty($vital_data)) {
@@ -341,11 +269,12 @@ class AppointmentCES extends Component
                 $this->wh_ratio = round($vital_data->waist / $vital_data->hip, 2);
             }
             $billing_data = Billing::where('appointment_id', $data->id)->first();
-            $this->procedureFee = $billing_data->procedure_id ?? 0;
+            $this->procedure_price = $billing_data->procedure_id ?? 0;
             $this->discount = $billing_data->discount ?? 0;
             $this->round_off = $billing_data->round_off ?? 0;
             $this->mode_of_payment = $billing_data->mode_of_payment ?? "Cash";
             $this->transaction_details = $billing_data->transaction_details ?? "";
+            $this->billing_status = $billing_data->billing_status ?? null;
             $patient_data = Patient::where('id', $data->patient_id)->first();
             $this->name = $patient_data->name;
             $this->locality_id = $patient_data->locality_id;
@@ -366,10 +295,10 @@ class AppointmentCES extends Component
     public function render()
     {
         if (Appointment::where('patient_id', $this->patient_id)->count() > 0 && $this->action != 'edit') {
-            $this->doctorRegistrationFee = 0;
-            $addTotalPayment =  $this->doctorRegistrationFee + $this->doctorConsultationFee + @$this->procedureFee[0] ?: 0;
+            $this->registration_fee = 0;
+            $addTotalPayment =  $this->registration_fee + $this->consultation_fee + @$this->procedure_price[0] ?: 0;
         } else {
-            $addTotalPayment =  $this->doctorRegistrationFee + $this->doctorConsultationFee + @$this->procedureFee[0] ?: 0;
+            $addTotalPayment =  $this->registration_fee + $this->consultation_fee + @$this->procedure_price[0] ?: 0;
         }
         if (empty($this->discount)) {
             $discountTotalPayment = $addTotalPayment;

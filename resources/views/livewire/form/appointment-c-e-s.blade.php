@@ -67,7 +67,7 @@
                 <div class="col-span-6">
                     <div class="p-5 mt-4 shadow-md drop-shadow-lg box">
                         <div class="mt-3">
-                            <label>{{ __('Select Patient') }}</label>
+                            <label class="text-base font-medium">{{ __('Select Patient') }}</label>
                             <div class="flex flex-col mt-2 sm:flex-row">
                                 <div class="mr-2 form-check">
                                     <label class="inline-flex items-center">
@@ -98,7 +98,7 @@
                                                 search-input-placeholder="Search Gender" :searchable="true" />
 
                                             <x-form-input name="dob" label="Date of Birth" type="date">
-                                                <small class="text-green-600 form-text">
+                                                <small class="ml-2 text-green-600 form-text">
                                                     {{ \Carbon\Carbon::parse($dob)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days') }}
                                                 </small>
                                             </x-form-input>
@@ -164,16 +164,16 @@
 
                                 <x-form-input name="bmi" label="BMI" type="number" disabled>
                                     @if ($bmi <= 18.5)
-                                        <small class="text-orange-600 form-text">
+                                        <small class="ml-2 text-orange-600 form-text">
                                             Underweight
                                         @elseif ($bmi > 18.5 && $bmi <= 24.9)
-                                            <small class="text-green-600 form-text">
+                                            <small class="ml-2 text-green-600 form-text">
                                                 Normal Weight
                                             @elseif ($bmi >= 25 && $bmi <= 29.9)
-                                                <small class="text-yellow-600 form-text">
+                                                <small class="ml-2 text-yellow-600 form-text">
                                                     Overweight
                                                 @else
-                                                    <small class="text-red-600 form-text">
+                                                    <small class="ml-2 text-red-600 form-text">
                                                         Obesity
                                     @endif
                                     </small>
@@ -188,24 +188,24 @@
                                 <x-form-input name="wh_ratio" label="WH Ratio" type="number" disabled>
                                     @if ($gender == 'FeMale')
                                         @if ($wh_ratio <= 0.8)
-                                            <small class="text-green-600 form-text">
+                                            <small class="ml-2 text-green-600 form-text">
                                                 Low Health Risk
                                             @elseif ($wh_ratio > 0.81 && $wh_ratio <= 0.84)
-                                                <small class="text-orange-600 form-text">
+                                                <small class="ml-2 text-orange-600 form-text">
                                                     Moderate Health Risk
                                                 @else
-                                                    <small class="text-red-600 form-text">
+                                                    <small class="ml-2 text-red-600 form-text">
                                                         High Health Risk
                                         @endif
                                     @else
                                         @if ($wh_ratio <= 0.95)
-                                            <small class="text-green-600 form-text">
+                                            <small class="ml-2 text-green-600 form-text">
                                                 Low Health Risk
                                             @elseif ($wh_ratio > 0.96 && $wh_ratio <= 1.0)
-                                                <small class="text-orange-600 form-text">
+                                                <small class="ml-2 text-orange-600 form-text">
                                                     Moderate Health Risk
                                                 @else
-                                                    <small class="text-red-600 form-text">
+                                                    <small class="ml-2 text-red-600 form-text">
                                                         High Health Risk
                                         @endif
                                     @endif
@@ -219,13 +219,13 @@
                 <div class="col-span-3">
                     <x-form-group label="Amount Calculation" class="p-5 shadow-md drop-shadow-lg box">
                         @wire('debounce.200ms')
-                            <x-form-input name="doctorRegistrationFee" label="Doctor Registration Fee" type="number"
+                            <x-form-input name="registration_fee" label="Doctor Registration Fee" type="number"
                                 disabled />
 
-                            <x-form-input name="doctorConsultationFee" label="Doctor Consultation Fee" type="number"
+                            <x-form-input name="consultation_fee" label="Doctor Consultation Fee" type="number"
                                 disabled />
 
-                            <x-form-input name="procedureFee" label="Procedure Fee" type="number" disabled />
+                            <x-form-input name="procedure_price" label="Procedure Fee" type="number" disabled />
 
                             <x-form-input name="discount" label="Discount" type="number" />
 
@@ -233,15 +233,20 @@
 
                             <x-form-input name="totalPayment" label="Total Payment" type="number" disabled />
 
-                            <x-simple-select name="mode_of_payment" id="mode_of_payment" label="Select Mode of Payment"
-                                wire:model="mode_of_payment" :options="Helper::getEnum('billings', 'mode_of_payment')"
-                                placeholder="Please Select Mode of Payment"
-                                search-input-placeholder="Search Mode of Payment" :searchable="true" />
+                            <div class="grid-cols-2 gap-2 sm:grid">
+                                <x-simple-select name="mode_of_payment" id="mode_of_payment" label="Mode of Payment"
+                                    wire:model="mode_of_payment" :options="Helper::getEnum('billings', 'mode_of_payment')"
+                                    placeholder="Please Select Mode of Payment"
+                                    search-input-placeholder="Search Mode of Payment" :searchable="true" />
 
-                            @if ($mode_of_payment != 'Cash' && !is_null($mode_of_payment))
-                                <x-form-input name="transaction_details" label="Transaction Details (ID, Check No.)"
-                                    type="text" />
-                            @endif
+                                @if ($mode_of_payment != 'Cash' && !is_null($mode_of_payment))
+                                    <x-form-input name="transaction_details" label="Transaction Id" type="text" />
+                                @endif
+                            </div>
+
+                            <div class="mt-2">
+                                <x-form-checkbox name="billing_status" label="Pay Later" />
+                            </div>
                         @endwire
                     </x-form-group>
                 </div>

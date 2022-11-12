@@ -29,7 +29,11 @@ class BillingFactory extends Factory
             'round_off' => fake()->numberBetween(0, 100),
             'mode_of_payment' => Arr::random(['Credit Card', 'Debit Card', 'Cash', 'Cheque', 'Digital Payments (UPI; Mobile Wallets)']),
             'transaction_details' => fake()->uuid(),
+            'registration_fee' => fake()->numberBetween(50, 200),
+            'consultation_fee' => fake()->numberBetween(500, 1000),
+            'procedure_price' => fake()->numberBetween(1000, 5000),
             'branch_id' => Branch::pluck('id')[fake()->numberBetween(1, Branch::count() - 1)],
+            'status' => fake()->boolean()
         ];
     }
 }

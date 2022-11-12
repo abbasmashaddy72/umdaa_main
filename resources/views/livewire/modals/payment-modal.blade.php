@@ -9,11 +9,11 @@
                 wire:model="procedure_id" :options="Helper::getKeyValuesWithMap('Procedure', 'name', 'id')" value-field='id' text-field='name'
                 placeholder="Select Procedure" search-input-placeholder="Search Procedure" :searchable="true" />
 
-            <x-form-input name="doctorRegistrationFee" label="Doctor Registration Fee" type="number" disabled />
+            <x-form-input name="registration_fee" label="Doctor Registration Fee" type="number" disabled />
 
-            <x-form-input name="doctorConsultationFee" label="Doctor Consultation Fee" type="number" disabled />
+            <x-form-input name="consultation_fee" label="Doctor Consultation Fee" type="number" disabled />
 
-            <x-form-input name="procedureFee" label="Procedure Fee" type="number" disabled />
+            <x-form-input name="procedure_price" label="Procedure Fee" type="number" disabled />
 
             <x-form-input name="discount" label="Discount" type="number" />
 

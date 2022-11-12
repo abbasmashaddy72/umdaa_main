@@ -74,6 +74,6 @@
     </x-slot>
 
     <x-slot name="buttons">
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" type="submit">Save</button>
     </x-slot>
 </x-modal>

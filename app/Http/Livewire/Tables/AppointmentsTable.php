@@ -50,6 +50,9 @@ class AppointmentsTable extends LivewireDatatable
                 ->defaultSort(now())
                 ->filterable(),
 
+            Column::name('status')
+                ->filterable(),
+
             Column::callback(['id'], function ($id) {
                 return view('pages.appointment.actions', ['id' => $id]);
             })->excludeFromExport()->unsortable()->label('Action'),

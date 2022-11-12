@@ -20,19 +20,19 @@ class VitalModal extends ModalComponent
     {
         if (!empty($this->appointment_id)) {
             $data = Vital::where('appointment_id', $this->appointment_id)->latest()->first();
-            $this->vital_id = $data->id;
-            $this->pulse_rate = $data->pulse_rate;
-            $this->bp = $data->bp;
-            $this->resp_rate = $data->resp_rate;
-            $this->temp = $data->temp;
-            $this->spo2 = $data->spo2;
-            $this->height = $data->height;
-            $this->weight = $data->weight;
-            $this->bmi = $data->bmi;
-            $this->bsa = $data->bsa;
-            $this->waist = $data->waist;
-            $this->hip = $data->hip;
-            $this->wh_ratio = $data->wh_ratio;
+            $this->vital_id = $data->id ?? '';
+            $this->pulse_rate = $data->pulse_rate ?? '';
+            $this->bp = $data->bp ?? '';
+            $this->resp_rate = $data->resp_rate ?? '';
+            $this->temp = $data->temp ?? '';
+            $this->spo2 = $data->spo2 ?? '';
+            $this->height = $data->height ?? '';
+            $this->weight = $data->weight ?? '';
+            $this->bmi = $data->bmi ?? '';
+            $this->bsa = $data->bsa ?? '';
+            $this->waist = $data->waist ?? '';
+            $this->hip = $data->hip ?? '';
+            $this->wh_ratio = $data->wh_ratio ?? '';
         }
         $appointment_data = Appointment::find($this->appointment_id);
         $patient_data = Patient::where('id', $appointment_data->patient_id)->first();
@@ -63,6 +63,7 @@ class VitalModal extends ModalComponent
     public function add()
     {
         $validatedData = $this->validate();
+        $validatedData['appointment_id'] = $this->appointment_id;
 
         if (!empty($this->vital_id)) {
             Vital::findOrFail($this->vital_id)->update($validatedData);
@@ -79,6 +80,19 @@ class VitalModal extends ModalComponent
 
     public function render()
     {
+        if ($this->height == null || $this->weight == null) {
+            $this->bmi = 0;
+            $this->bsa = 0;
+        } else {
+            $this->bmi = round($this->weight / ($this->height / 100) ** 2, 2);
+            $this->bsa = round(sqrt($this->height * $this->weight / 3600), 2);
+        }
+        if ($this->waist == null || $this->hip == null) {
+            $this->wh_ratio = 0;
+        } else {
+            $this->wh_ratio = round($this->waist / $this->hip, 2);
+        }
+
         return view('livewire.modals.vital-modal');
     }
 }
