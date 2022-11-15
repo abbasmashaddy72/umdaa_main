@@ -18,7 +18,7 @@ class AppointmentCES extends Component
     // Model Values Appointment
     public $doctor_id, $patient_id, $referral_id, $date, $time, $appointment_status;
     // Model Values Billing
-    public $procedure_id, $discount = 0, $round_off = 0, $mode_of_payment, $transaction_details, $registration_fee = 0, $consultation_fee = 0, $procedure_price = 0, $billing_status;
+    public $procedure_id, $discount = 0, $discount_inr = 0, $round_off = 0, $mode_of_payment, $transaction_details, $registration_fee = 0, $consultation_fee = 0, $procedure_price = 0, $billing_status;
     // Model Values Patient
     public $name, $locality_id, $gender, $blood_group, $dob, $contact_no, $description;
     // Model Values Vital
@@ -96,6 +96,22 @@ class AppointmentCES extends Component
     public function updatedProcedureId($procedure)
     {
         $this->procedure_price = Procedure::where('id', $procedure)->pluck('price');
+    }
+
+    public function updatedDiscount($data)
+    {
+        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price ?: 0;
+        $discountTotalPayment = $addTotalPayment - (($addTotalPayment / 100) * $data ?? 0);
+
+        $this->discount_inr = round($addTotalPayment - $discountTotalPayment, 2);
+    }
+
+    public function updatedDiscountInr($data)
+    {
+        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price ?: 0;
+        $discountTotalPayment = $addTotalPayment - $data;
+
+        $this->discount = round(($addTotalPayment - $discountTotalPayment) * 100 / $addTotalPayment, 2);
     }
 
     protected $rules = [
@@ -324,6 +340,6 @@ class AppointmentCES extends Component
             $this->wh_ratio = round($this->waist / $this->hip, 2);
         }
 
-        return view('livewire.form.appointment-c-e-s');
+        return view('livewire.form.appointment-c-e-s', compact(['discountTotalPayment', 'addTotalPayment']));
     }
 }

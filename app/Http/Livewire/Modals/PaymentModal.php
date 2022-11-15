@@ -13,13 +13,29 @@ class PaymentModal extends ModalComponent
     // Set Data
     public $appointment_id;
     // Model Keys
-    public $procedure_id, $patient_id, $discount = 0, $round_off = 0, $mode_of_payment, $branch_id, $transaction_details, $registration_fee = 0, $consultation_fee = 0, $procedure_price = 0;
+    public $procedure_id, $patient_id, $discount = 0, $discount_inr = 0, $round_off = 0, $mode_of_payment, $branch_id, $transaction_details, $registration_fee = 0, $consultation_fee = 0, $procedure_price = 0;
     // Custom Keys
     public $name;
 
     public function updatedProcedureId($procedure)
     {
         $this->procedure_price = Procedure::where('id', $procedure)->value('price');
+    }
+
+    public function updatedDiscount($data)
+    {
+        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price ?: 0;
+        $discountTotalPayment = $addTotalPayment - (($addTotalPayment / 100) * $data ?? 0);
+
+        $this->discount_inr = round($addTotalPayment - $discountTotalPayment, 2);
+    }
+
+    public function updatedDiscountInr($data)
+    {
+        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price ?: 0;
+        $discountTotalPayment = $addTotalPayment - $data;
+
+        $this->discount = round(($addTotalPayment - $discountTotalPayment) * 100 / $addTotalPayment, 2);
     }
 
     public function mount()
@@ -84,12 +100,13 @@ class PaymentModal extends ModalComponent
         } else {
             $discountTotalPayment = $addTotalPayment - (($addTotalPayment / 100) * $this->discount ?? 0);
         }
+
         if (empty($this->round_off)) {
-            $this->totalPayment = round((int)$discountTotalPayment);
+            $this->totalPayment = round((int)$discountTotalPayment, 2);
         } else {
-            $this->totalPayment = round($discountTotalPayment - $this->round_off ?? 0) ?? 0;
+            $this->totalPayment = round($discountTotalPayment - $this->round_off ?? 0, 2) ?? 0;
         }
 
-        return view('livewire.modals.payment-modal');
+        return view('livewire.modals.payment-modal', compact(['discountTotalPayment', 'addTotalPayment']));
     }
 }

@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div>
     <label class="block">
         <x-form-label :label="$label" />
 

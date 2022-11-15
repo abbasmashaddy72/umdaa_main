@@ -227,7 +227,10 @@
 
                             <x-form-input name="procedure_price" label="Procedure Fee" type="number" disabled />
 
-                            <x-form-input name="discount" label="Discount" type="number" />
+                            <div class="grid-cols-2 gap-2 sm:grid">
+                                <x-form-input name="discount" label="Discount (%)" type="number" />
+                                <x-form-input name="discount_inr" label="Discount (INR)" type="number" />
+                            </div>
 
                             <x-form-input name="round_off" label="Round Off" type="number" step=".01" />
 
