@@ -100,7 +100,7 @@ class AppointmentCES extends Component
 
     public function updatedDiscount($data)
     {
-        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price ?: 0;
+        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price[0] ?: 0;
         $discountTotalPayment = $addTotalPayment - (($addTotalPayment / 100) * $data ?? 0);
 
         $this->discount_inr = round($addTotalPayment - $discountTotalPayment, 2);
@@ -108,7 +108,7 @@ class AppointmentCES extends Component
 
     public function updatedDiscountInr($data)
     {
-        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price ?: 0;
+        $addTotalPayment =  $this->registration_fee + $this->consultation_fee +  @$this->procedure_price[0] ?: 0;
         $discountTotalPayment = $addTotalPayment - $data;
 
         $this->discount = round(($addTotalPayment - $discountTotalPayment) * 100 / $addTotalPayment, 2);
@@ -170,7 +170,7 @@ class AppointmentCES extends Component
         $transaction_details = $validatedData['transaction_details'];
         $registration_fee = $validatedData['registration_fee'];
         $consultation_fee = $validatedData['consultation_fee'];
-        $procedure_price = $validatedData['procedure_price'];
+        $procedure_price = $validatedData['procedure_price'][0];
         $billing_status = $validatedData['billing_status'];
         unset($validatedData['registration_fee']);
         unset($validatedData['consultation_fee']);
@@ -182,15 +182,42 @@ class AppointmentCES extends Component
         unset($validatedData['transaction_details']);
         unset($validatedData['billing_status']);
         $validatedData['time'] = date("H:i:s", strtotime($validatedData['time']));
-        $name = $validatedData['name'];
-        $validatedData['locality_id'] = $this->selectedLocalityId['locality_id'];
-        $validatedData['branch_id'] = auth()->user()->branch_id;
-        $locality_id = $validatedData['locality_id'];
-        $gender = $validatedData['gender'];
-        $blood_group = $validatedData['blood_group'];
-        $dob = $validatedData['dob'];
-        $contact_no = $validatedData['contact_no'];
-        $description = $validatedData['description'];
+
+        if ($this->radio_patient_id == 'New Patient') {
+            $name = $validatedData['name'];
+            $validatedData['locality_id'] = $this->selectedLocalityId['locality_id'];
+            $validatedData['branch_id'] = auth()->user()->branch_id;
+            $locality_id = $validatedData['locality_id'];
+            $gender = $validatedData['gender'];
+            $blood_group = $validatedData['blood_group'];
+            $dob = $validatedData['dob'];
+            $contact_no = $validatedData['contact_no'];
+            $description = $validatedData['description'];
+            unset($validatedData['name']);
+            unset($validatedData['locality_id']);
+            unset($validatedData['gender']);
+            unset($validatedData['blood_group']);
+            unset($validatedData['dob']);
+            unset($validatedData['contact_no']);
+            unset($validatedData['description']);
+
+            $patient = Patient::create([
+                'name' => $name,
+                'locality_id' => $locality_id,
+                'gender' => $gender,
+                'blood_group' => $blood_group,
+                'dob' => $dob,
+                'contact_no' => $contact_no,
+                'description' => $description,
+                'branch_id' => $validatedData['branch_id']
+            ]);
+            $patient_id = $validatedData['patient_id'] = $patient->id;
+        }
+
+        if ($this->radio_patient_id == 'Old Patient') {
+            $patient_id = $validatedData['patient_id'];
+        }
+
         unset($validatedData['name']);
         unset($validatedData['locality_id']);
         unset($validatedData['gender']);
@@ -199,21 +226,10 @@ class AppointmentCES extends Component
         unset($validatedData['contact_no']);
         unset($validatedData['description']);
 
-        $patient = Patient::create([
-            'name' => $name,
-            'locality_id' => $locality_id,
-            'gender' => $gender,
-            'blood_group' => $blood_group,
-            'dob' => $dob,
-            'contact_no' => $contact_no,
-            'description' => $description,
-            'branch_id' => $validatedData['branch_id']
-        ]);
-
-        $validatedData['patient_id'] = $patient->id;
         $validatedData['status'] = $validatedData['appointment_status'];
         unset($validatedData['appointment_status']);
         $validatedData['status'] = "Arrived";
+        $validatedData['branch_id'] = auth()->user()->branch_id;
 
         $appointment = Appointment::create($validatedData);
 
@@ -236,7 +252,7 @@ class AppointmentCES extends Component
         Billing::create([
             'appointment_id' => $appointment->id,
             'procedure_id' => $procedure,
-            'patient_id' => $patient->id,
+            'patient_id' => $patient_id,
             'discount' => $discount,
             'round_off' => $round_off,
             'mode_of_payment' => $mode_of_payment,
@@ -244,7 +260,7 @@ class AppointmentCES extends Component
             'registration_fee' => $registration_fee,
             'consultation_fee' => $consultation_fee,
             'procedure_price' => $procedure_price,
-            'billing_status' => $billing_status,
+            'status' => $billing_status,
         ]);
 
         notify()->success('Appointment Saved Successfully!');
@@ -305,7 +321,8 @@ class AppointmentCES extends Component
             $this->date = date('Y-m-d');
             $this->day = Carbon::parse($this->date)->format('l');
         }
-        $this->options = ['Select', 'Years', 'Months', 'Weeks', 'Days'];
+        $this->options = ['Years', 'Months', 'Weeks', 'Days'];
+        $this->age_select = 'Years';
     }
 
     public function render()
@@ -339,6 +356,7 @@ class AppointmentCES extends Component
         } else {
             $this->wh_ratio = round($this->waist / $this->hip, 2);
         }
+        $this->mode_of_payment = 'Cash';
 
         return view('livewire.form.appointment-c-e-s', compact(['discountTotalPayment', 'addTotalPayment']));
     }

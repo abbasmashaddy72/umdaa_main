@@ -55,6 +55,10 @@ class PaymentModal extends ModalComponent
         }
         $appointment_data = Appointment::find($this->appointment_id);
         $patient_data = Patient::where('id', $appointment_data->patient_id)->first();
+        if (empty($data)) {
+            $this->patient_id = $patient_data->id;
+            $this->procedure_price = 0;
+        }
         $this->name = $patient_data->name;
     }
 
@@ -80,10 +84,13 @@ class PaymentModal extends ModalComponent
     public function add()
     {
         $validatedData = $this->validate();
-        $validatedData['appointment_id'] = $this->appointment_id;
         $validatedData['status'] = 1;
+        $validatedData['branch_id'] = auth()->user()->branch_id;
 
-        Billing::where('appointment_id', $this->appointment_id)->updateOrCreate($validatedData);
+        Billing::updateOrCreate([
+            'appointment_id' => $this->appointment_id,
+            'patient_id' => $this->patient_id
+        ], $validatedData);
 
         notify()->success('Payment Updated Successfully!');
 

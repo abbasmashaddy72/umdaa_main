@@ -48,4 +48,9 @@ class Appointment extends Model
     {
         return $this->belongsToMany(Vital::class);
     }
+
+    public function billing()
+    {
+        return $this->belongsTo(Billing::class, 'id', 'appointment_id');
+    }
 }

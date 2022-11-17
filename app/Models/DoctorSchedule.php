@@ -10,6 +10,7 @@ class DoctorSchedule extends Model
     use HasFactory;
 
     protected $fillable = [
+        'doctor_id',
         'day',
         'from',
         'to',

@@ -8,7 +8,7 @@ use Livewire\Component;
 class BulkSmsC extends Component
 {
     //Custom Values
-    public $templates = [], $doctors, $patients, $selectedDoctors = [], $selectedPatients = [], $contactNumbers, $selectedTemplate, $variableCount;
+    public $templates = [], $doctors, $patients, $selectedDoctors = [], $selectedPatients = [], $contactNumbers, $selectedTemplate, $variableCount, $variable = [];
 
     public function mount()
     {

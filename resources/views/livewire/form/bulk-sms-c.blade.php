@@ -54,7 +54,16 @@
 
                     <x-form-select name="selectedTemplate" label="Select Template" :options="$this->templates"
                         placeholder="Please Select" />
+                @endwire
 
+                <div>
+                    @for ($x = 0; $x < $variableCount; $x++)
+                        <x-form-input name="variable" label="Variable {{ $x + 1 }}" type="text"
+                            wire:key='variable{{ $x + 1 }}' wire:model='variable.{{ $x + 1 }}' />
+                    @endfor
+                </div>
+
+                @wire()
                     <x-form-textarea label="Selected Template" name="selectedTemplate" />
                 @endwire
 
@@ -62,7 +71,6 @@
                     <x-submit-button>
                         {{ __('Save') }}
                     </x-submit-button>
-
                 </div>
             </form>
         </div>

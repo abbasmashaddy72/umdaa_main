@@ -13,7 +13,7 @@ class DoctorCES extends Component
     public $name, $email, $locality_id, $gender, $dob, $contact_no, $qualification, $registration_no, $department_id, $registration_fee, $consultation_fee, $review_link, $about, $career_start_date;
 
     // Custom Values
-    public $data, $selectedLocalityId = null;
+    public $data, $selectedLocalityId = null, $doctor_id;
 
     // Listeners
     protected $listeners = ['locality_changed' => 'locality_changed'];
@@ -87,6 +87,7 @@ class DoctorCES extends Component
             $this->review_link = $data->review_link;
             $this->about = $data->about;
             $this->career_start_date = $data->career_start_date;
+            $this->doctor_id = $data->id;
         }
     }
 

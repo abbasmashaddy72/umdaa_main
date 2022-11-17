@@ -15,7 +15,10 @@ class DoctorsTable extends LivewireDatatable
 
     public function builder()
     {
-        return Doctor::query();
+        if (auth()->user()->roles->first()->title == 'Admin') {
+            return Doctor::query()->with('department');
+        }
+        return Doctor::query()->with('department')->where('branch_id', auth()->user()->branch_id);
     }
 
     public function columns()

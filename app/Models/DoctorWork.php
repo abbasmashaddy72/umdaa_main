@@ -10,6 +10,7 @@ class DoctorWork extends Model
     use HasFactory;
 
     protected $fillable = [
+        'doctor_id',
         'where',
         'from',
         'to',

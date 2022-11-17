@@ -29,8 +29,6 @@ class StateCityLocality extends Component
             $this->selectedCity = $locality->city_id;
             $this->selectedState = $city->state_id;
         }
-
-        // dd($selectedLocality, $this->selectedCity, $this->selectedState);
     }
 
     public function render()

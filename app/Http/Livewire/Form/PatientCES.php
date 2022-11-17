@@ -12,10 +12,8 @@ class PatientCES extends Component
 {
     // Model Values
     public $name, $locality_id, $gender, $blood_group, $dob, $contact_no, $description;
-
     // Custom Values
     public $data = null, $selectedLocalityId = null, $age, $age_select, $options;
-
     // Listeners
     protected $listeners = ['locality_changed' => 'locality_changed'];
 
@@ -25,31 +23,35 @@ class PatientCES extends Component
         $this->selectedLocalityId = $locality_id;
     }
 
-    public function updatedAgeSelect($data)
+    public function updatedAgeSelect($selected_age)
     {
-        if ($data = 'Years') {
+        if ($selected_age == 'Years') {
             $this->dob = Carbon::now()->subYears($this->age)->format('Y-m-d');
-        } elseif ($data = 'Months') {
+        } elseif ($selected_age == 'Months') {
             $this->dob = Carbon::now()->subMonths($this->age)->format('Y-m-d');
+        } elseif ($selected_age == 'Weeks') {
+            $this->dob = Carbon::now()->subWeeks($this->age)->format('Y-m-d');
         } else {
             $this->dob = Carbon::now()->subDays($this->age)->format('Y-m-d');
         }
     }
 
-    public function updatedAge($data)
+    public function updatedAge()
     {
-        if ($this->age_select = 'Years') {
-            $this->dob = Carbon::now()->subYears($data)->format('Y-m-d');
-        } elseif ($this->age_select = 'Months') {
-            $this->dob = Carbon::now()->subMonths($data)->format('Y-m-d');
+        if ($this->age_select == 'Years') {
+            $this->dob = Carbon::now()->subYears($this->age)->format('Y-m-d');
+        } elseif ($this->age_select == 'Months') {
+            $this->dob = Carbon::now()->subMonths($this->age)->format('Y-m-d');
+        } elseif ($this->age_select == 'Weeks') {
+            $this->dob = Carbon::now()->subWeeks($this->age)->format('Y-m-d');
         } else {
-            $this->dob = Carbon::now()->subDays($data)->format('Y-m-d');
+            $this->dob = Carbon::now()->subDays($this->age)->format('Y-m-d');
         }
     }
 
     public function updatedDob($date)
     {
-        $data = Carbon::parse($this->dob)->diffForHumans();
+        $data = Carbon::parse($date)->diffForHumans();
         $data = str_replace(' ago', '', $data);
         $data = explode(' ', $data);
         $this->age = $data[0];
@@ -79,6 +81,7 @@ class PatientCES extends Component
     {
         $validatedData = $this->validate();
         $validatedData['locality_id'] = $this->selectedLocalityId['locality_id'];
+        $validatedData['branch_id'] = auth()->user()->branch_id;
 
         Patient::create($validatedData);
 
@@ -91,6 +94,7 @@ class PatientCES extends Component
     {
         $validatedData = $this->validate();
         $validatedData['locality_id'] = $this->selectedLocalityId['locality_id'] ?? $this->data->locality_id;
+        $validatedData['branch_id'] = auth()->user()->branch_id;
 
         Patient::where('id', $this->data->id)->update($validatedData);
 
@@ -119,7 +123,8 @@ class PatientCES extends Component
                 $this->age_select = ucwords($data[1]) . 's';
             }
         }
-        $this->options = ['Select', 'Years', 'Months', 'Weeks', 'Days'];
+        $this->options = ['Years', 'Months', 'Weeks', 'Days'];
+        $this->age_select = 'Years';
     }
 
     public function render()

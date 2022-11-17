@@ -15,6 +15,4 @@
             </path>
         </svg>
     </a>
-
-    @include('datatables::delete', ['value' => $id])
 </div>
